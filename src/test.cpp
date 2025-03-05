@@ -37,7 +37,7 @@ int main() {
         cout << endl; 
     }
 
-    // for (int i = 0; i < 4; ++i) {    //释放内存？
+    // for (int i = 0; i < 4; ++i) {    //释放内存？ 
     //     delete[] admitmatrix[i];
     // }
     // delete[] admitmatrix;
