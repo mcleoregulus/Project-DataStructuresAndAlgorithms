@@ -1,6 +1,10 @@
 
 #include "graph.hpp"
 #include <cassert>
+// #include <vector>
+#include <complex>
+
+using namespace std;
 
 // Implementation for the adjacency matrix representation
 class Graphm : public Graph
@@ -10,6 +14,8 @@ private:
     int **matrix;
     // Pointer to adjacency matrix
     int *mark;
+    
+    // int admit_matrix[][];
 
 public:
     Graphm(int numVert)
@@ -34,7 +40,7 @@ public:
         mark = new int[n];
         // Initialize mark array
         for (i = 0; i < numVertex; i++)
-            mark[i] = 0;                                        // UNVISITED = 0
+            mark[i] = 0;                       // UNVISITED = 0
         matrix = (int **)new int *[numVertex]; // Make matrix
         for (i = 0; i < numVertex; i++)
             matrix[i] = new int[numVertex];
@@ -66,7 +72,7 @@ public:
     void setEdge(int v1, int v2, int wt)
     {
         // Assert(wt>0, "Illegal weight value");            // use cassert
-        assert(wt>0 && "Illegal weight value");
+        assert(wt > 0 && "Illegal weight value");
         if (matrix[v1][v2] == 0)
             numEdge++;
         matrix[v1][v2] = wt;
@@ -84,4 +90,33 @@ public:
     int weight(int v1, int v2) { return matrix[v1][v2]; }
     int getMark(int v) { return mark[v]; }
     void setMark(int v, int val) { mark[v] = val; }
+
+    int **getMatrix() { return matrix; }
+
+    int **admitMatrix()
+    {
+        int** admit_matrix = new int*[numVertex];
+        for (int i = 0; i < numVertex; ++i) {
+            admit_matrix[i] = new int[numVertex](); // 初始化为0
+        }
+        for (int i = 0; i < numVertex; i++)
+        {
+            int sum = 0;                        //  diagonal term
+            for (int j = 0; j < numVertex; j++)
+            {
+                sum += matrix[i][j];
+            }
+            admit_matrix[i][i] = sum;
+            for (int j = 0; j < numVertex; j++) // off-diagonal term
+            {
+                if (i != j)
+                {
+                    admit_matrix[i][j] = -matrix[i][j];
+                    // admit_matrix[j][i] = admit_matrix[i][j];
+                }
+            }
+        }
+        return admit_matrix;
+    }
+
 };

@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "cassert": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "ostream": "cpp",
+        "new": "cpp"
     }
 }
