@@ -16,7 +16,7 @@ int main() {
 
     my_graph.setEdge(1, 0, 1);
     my_graph.setEdge(2, 0, 1);
-    my_graph.setEdge(2, 1, 5);
+    my_graph.setEdge(2, 1, 2);
     my_graph.setEdge(3, 1, 1);
     my_graph.setEdge(3, 2, 1);
 
@@ -26,7 +26,7 @@ int main() {
 
     int e = my_graph.e();
     int n = my_graph.n();
-    int **adjmatrix = my_graph.getMatrix();
+    // int **adjmatrix = my_graph.adjMatrix();
     int **admitmatrix =my_graph.admitMatrix();
 
     // cout << ": " << a << " " << b << " " << e << " " << n << " " << w;
@@ -36,13 +36,6 @@ int main() {
         }
         cout << endl; 
     }
-
-    // for (int i = 0; i < 4; ++i) {    //释放内存？ 
-    //     delete[] admitmatrix[i];
-    // }
-    // delete[] admitmatrix;
-
-
 
     return 0;
 }

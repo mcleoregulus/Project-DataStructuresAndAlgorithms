@@ -14,8 +14,8 @@ private:
     int **matrix;
     // Pointer to adjacency matrix
     int *mark;
-    
-    // int admit_matrix[][];
+
+    int **admit_matrix;
 
 public:
     Graphm(int numVert)
@@ -28,9 +28,14 @@ public:
         // Constructor
         // Destructor
         delete[] mark; // Return dynamically allocated memory
+        
         for (int i = 0; i < numVertex; i++)
             delete[] matrix[i];
         delete[] matrix;
+
+        for (int i = 0; i < numVertex; i++)
+            delete[] admit_matrix[i];
+        delete[] admit_matrix;
     }
     void Init(int n)
     { // Initialize the graph
@@ -41,12 +46,21 @@ public:
         // Initialize mark array
         for (i = 0; i < numVertex; i++)
             mark[i] = 0;                       // UNVISITED = 0
+        
         matrix = (int **)new int *[numVertex]; // Make matrix
         for (i = 0; i < numVertex; i++)
             matrix[i] = new int[numVertex];
         for (i = 0; i < numVertex; i++) // Initialize to 0 weights
             for (int j = 0; j < numVertex; j++)
                 matrix[i][j] = 0;
+        
+        admit_matrix = (int **)new int *[numVertex]; // Make matrix
+        for (i = 0; i < numVertex; i++)
+            admit_matrix[i] = new int[numVertex];
+        for (i = 0; i < numVertex; i++) // Initialize to 0
+            for (int j = 0; j < numVertex; j++)
+                admit_matrix[i][j] = 0;
+
     }
     int n() { return numVertex; } // Number of vertices
     int e() { return numEdge; }   // Number of edges
@@ -91,17 +105,18 @@ public:
     int getMark(int v) { return mark[v]; }
     void setMark(int v, int val) { mark[v] = val; }
 
-    int **getMatrix() { return matrix; }
+    int **adjMatrix() { return matrix; }
 
     int **admitMatrix()
     {
-        int** admit_matrix = new int*[numVertex];
-        for (int i = 0; i < numVertex; ++i) {
-            admit_matrix[i] = new int[numVertex](); // 初始化为0
-        }
+        // int **admit_matrix = new int *[numVertex];
+        // for (int i = 0; i < numVertex; ++i)
+        // {
+        //     admit_matrix[i] = new int[numVertex](); // 初始化为0
+        // }
         for (int i = 0; i < numVertex; i++)
         {
-            int sum = 0;                        //  diagonal term
+            int sum = 0; //  diagonal term
             for (int j = 0; j < numVertex; j++)
             {
                 sum += matrix[i][j];
@@ -118,5 +133,4 @@ public:
         }
         return admit_matrix;
     }
-
 };
