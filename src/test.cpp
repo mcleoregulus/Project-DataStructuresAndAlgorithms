@@ -23,8 +23,11 @@ int main() {
     my_graph.setEdge(2, 3, {2,-6});
     my_graph.setEdge(3, 2, {2,-6});
 
-    complex<double> **admitmatrix =my_graph.admitMatrix();
-    my_graph.printMatrix(admitmatrix);
+    vector<vector<complex<double>>> admitmatrix = my_graph.admitMatrix();
+    vector<vector<complex<double>>> adjmatrix = my_graph.adjMatrix();
+    my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
+    cout << endl;
+    my_graph.printMatrix(admitmatrix);  // 打印导纳矩阵
 
 
     // int f = my_graph.first(1);
