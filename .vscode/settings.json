@@ -3,6 +3,7 @@
         "cassert": "cpp",
         "random": "cpp",
         "ostream": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "complex": "cpp"
     }
 }

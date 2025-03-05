@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
     // 创建复数
-    complex<double> c1(3.0, 4.0);  // 实部为3.0，虚部为4.0
+    complex<double> c1(0);  // 实部为3.0，虚部为4.0
     complex<double> c2(1.0, 2.0);  // 实部为1.0，虚部为2.0
 
     // 复数运算

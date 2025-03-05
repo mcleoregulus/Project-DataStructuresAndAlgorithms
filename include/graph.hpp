@@ -1,8 +1,13 @@
 
 // 这些实现的用户必须添加相应功能，例如从文件中读取图描述。可以使用ADT提供的setEdge函数逐步构建图。
+// 定义一个复数带权图
 
 // Graph abstract class. This ADT assumes that the number
 // of vertices is fixed when the graph is created.
+
+#include <complex>
+using namespace std;
+
 class Graph
 {
 private:
@@ -20,13 +25,13 @@ public:
     virtual int n() = 0;
     virtual int e() = 0;
     // Return v’s first neighbor
-    virtual int first(int v) = 0;
+    virtual int first(int v) = 0;   // ?
     // Return v’s next neighbor
-    virtual int next(int v, int w) = 0;
+    virtual int next(int v, int w) = 0; // ?
     // Set the weight for an edge
     // i, j: The vertices
     // wgt: Edge weight
-    virtual void setEdge(int v1, int v2, int wght) = 0;
+    virtual void setEdge(int v1, int v2, complex<double> wght) = 0; // ??
     // Delete an edge
     // i, j: The vertices
     virtual void delEdge(int v1, int v2) = 0;
@@ -37,7 +42,7 @@ public:
     // Return an edge’s weight
     // i, j: The vertices
     // Return: The weight of edge i,j, or zero
-    virtual int weight(int v1, int v2) = 0;
+    virtual complex<double> weight(int v1, int v2) = 0; // changed type
     // Get and Set the mark value for a vertex
     // v: The vertex
     // val: The value to set
