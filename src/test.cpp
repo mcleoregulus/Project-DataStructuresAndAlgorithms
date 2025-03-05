@@ -34,7 +34,7 @@ int main() {
         for (int j = 0; j < my_graph.n(); j++) {
             cout << admitmatrix[i][j] << "\t";
         }
-        cout << endl;
+        cout << endl; 
     }
 
     // for (int i = 0; i < 4; ++i) {    //释放内存？
