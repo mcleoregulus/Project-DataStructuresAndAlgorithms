@@ -5,6 +5,9 @@
 // Graph abstract class. This ADT assumes that the number
 // of vertices is fixed when the graph is created.
 
+#ifndef GRAPH_HPP
+#define GRAPH_HPP
+
 #include <complex>
 using namespace std;
 
@@ -51,3 +54,5 @@ public:
 };
 
 // VISITED = 1, UNVISITED = 0
+
+#endif // GRAPH_HPP

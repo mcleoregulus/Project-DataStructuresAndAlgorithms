@@ -1,4 +1,7 @@
 
+#ifndef GRAPHM_HPP
+#define GRAPHM_HPP
+
 #include "graph.hpp"
 #include <iostream>
 #include <cassert>
@@ -13,9 +16,7 @@ class Graphm : public Graph
 private:
     int numVertex, numEdge; // Store number of vertices, edges
     vector<int> mark;       // Use vector for mark array
-
     vector<vector<complex<double>>> matrix;       // Use vector of vectors for adjacency matrix
-    vector<vector<complex<double>>> admit_matrix; // Use vector of vectors for admittance matrix
 
 public:
     Graphm(int numVert)
@@ -36,9 +37,6 @@ public:
 
         // Initialize adjacency matrix
         matrix.resize(numVertex, vector<complex<double>>(numVertex, complex<double>(0, 0)));
-
-        // Initialize admittance matrix
-        admit_matrix.resize(numVertex, vector<complex<double>>(numVertex, complex<double>(0, 0)));
     }
     int n() { return numVertex; } // Number of vertices
     int e() { return numEdge; }   // Number of edges
@@ -85,41 +83,6 @@ public:
 
     vector<vector<complex<double>>> adjMatrix() { return matrix; }
 
-    vector<vector<complex<double>>> admitMatrix()
-    {
-        for (int i = 0; i < numVertex; i++)
-        {
-            complex<double> sum = 0; //  diagonal term
-            for (int j = 0; j < numVertex; j++)
-            {
-                sum += matrix[i][j];
-            }
-            admit_matrix[i][i] = sum;
-            for (int j = 0; j < numVertex; j++) // off-diagonal term
-            {
-                if (i != j)
-                {
-                    admit_matrix[i][j] = -matrix[i][j];
-                }
-            }
-        }
-        return admit_matrix;
-    }
-
-    void printMatrix(vector<vector<complex<double>>> matrix)    // 考虑独立
-    {
-        for (int i = 0; i < numVertex; i++)
-        {
-            for (int j = 0; j < numVertex; j++)
-            {
-                cout << matrix[i][j] << "\t";
-            }
-            cout << endl;
-        }
-    }
-
-
-
     void addVertex() {      // 新增节点
         numVertex++;
         matrix.resize(numVertex);
@@ -138,6 +101,6 @@ public:
         numVertex--;
     }
 
-    
-
 };
+
+#endif // GRAPHM_HPP
