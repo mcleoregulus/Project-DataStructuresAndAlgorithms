@@ -29,8 +29,8 @@ int main() {
     cout << endl;
     // my_graph.printMatrix(admitmatrix);  // 打印导纳矩阵
 
-    my_graph.addVertex();
-    // my_graph.delVertex(2);   //新增节点
+    // my_graph.addVertex(); // 新增节点
+    my_graph.delVertex(2);   // 删除指定节点
     adjmatrix = my_graph.adjMatrix();
     my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
 
