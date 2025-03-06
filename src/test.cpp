@@ -27,7 +27,12 @@ int main() {
     vector<vector<complex<double>>> adjmatrix = my_graph.adjMatrix();
     my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
     cout << endl;
-    my_graph.printMatrix(admitmatrix);  // 打印导纳矩阵
+    // my_graph.printMatrix(admitmatrix);  // 打印导纳矩阵
+
+    my_graph.addVertex();
+    // my_graph.delVertex(2);   //新增节点
+    adjmatrix = my_graph.adjMatrix();
+    my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
 
 
     // int f = my_graph.first(1);

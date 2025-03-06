@@ -4,6 +4,7 @@
         "random": "cpp",
         "ostream": "cpp",
         "new": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "iostream": "cpp"
     }
 }

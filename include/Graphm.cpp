@@ -117,4 +117,27 @@ public:
             cout << endl;
         }
     }
+
+
+
+    void addVertex() {
+        numVertex++;
+        matrix.resize(numVertex);
+        for (auto& row : matrix) {
+            row.resize(numVertex, complex<double>(0, 0)); // 调整列数
+        }
+    }
+
+    void delVertex(int v) {
+        if (v >= 0 && v < matrix.size()) {  // assert
+            matrix.erase(matrix.begin() + v);
+            for (auto& row : matrix) {          // 可合并检查条件
+                row.erase(row.begin() + v);              
+            }
+        }
+        numVertex--;
+    }
+
+    
+
 };
