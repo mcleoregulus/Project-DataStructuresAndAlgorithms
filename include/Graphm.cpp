@@ -106,7 +106,7 @@ public:
         return admit_matrix;
     }
 
-    void printMatrix(vector<vector<complex<double>>> matrix)
+    void printMatrix(vector<vector<complex<double>>> matrix)    // 考虑独立
     {
         for (int i = 0; i < numVertex; i++)
         {
@@ -117,4 +117,27 @@ public:
             cout << endl;
         }
     }
+
+
+
+    void addVertex() {      // 新增节点
+        numVertex++;
+        matrix.resize(numVertex);
+        for (auto& row : matrix) {
+            row.resize(numVertex, complex<double>(0, 0)); // 调整列数
+        }
+    }
+
+    void delVertex(int v) { // 删除指定节点
+        if (v >= 0 && v < matrix.size()) {  // assert
+            matrix.erase(matrix.begin() + v);
+            for (auto& row : matrix) {          // 可合并检查条件
+                row.erase(row.begin() + v);              
+            }
+        }
+        numVertex--;
+    }
+
+    
+
 };
