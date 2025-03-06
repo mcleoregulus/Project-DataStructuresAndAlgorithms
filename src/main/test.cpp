@@ -10,21 +10,24 @@ using namespace std;
 
 int main() {
     CircuitGraph my_circuit(4);
+    // printMatrix(my_circuit.adjMatrix());
+    // printMatrix(my_circuit.admitMatrix());
+
+    // my_circuit.setEdge(0, 1, {2, 4});
+    // my_circuit.setEdge(1, 0, {2, 4});
+
+    my_circuit.setBranch(1, 2, {2, 4});
+    my_circuit.setBranch(1, 3, {1, 1});
+    my_circuit.setBranch(2, 4, {3, 4});
+    my_circuit.setBranch(3, 4, {1, 2});
+
     printMatrix(my_circuit.adjMatrix());
     printMatrix(my_circuit.admitMatrix());
 
-    my_circuit.setEdge(0, 1, {2,-6});
-    my_circuit.setEdge(1, 0, {2,-6});
-
-    my_circuit.setEdge(0, 2, {1,-3});
-    my_circuit.setEdge(2, 0, {1,-3});
-
-    printMatrix(my_circuit.admitMatrix());
-
-    my_circuit.delVertex(2);
-    printMatrix(my_circuit.adjMatrix());
-    printMatrix(my_circuit.admitMatrix());
-    cout << my_circuit.n();
+    // my_circuit.delVertex(2);
+    // printMatrix(my_circuit.adjMatrix());
+    // printMatrix(my_circuit.admitMatrix());
+    // cout << my_circuit.n();
 
 
 

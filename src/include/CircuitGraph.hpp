@@ -36,19 +36,27 @@ class CircuitGraph : public Graphm {
             complex<double> sum = 0; //  diagonal term
             for (int j = 0; j < n(); ++j)
             {
-                sum += adjMatrix()[i][j];
+                if (adjMatrix()[i][j] == complex<double> {0, 0}) {continue;}
+                sum += complex<double> (1) / adjMatrix()[i][j];
             }
             admit_matrix[i][i] = sum;
             for (int j = 0; j < n(); ++j) // off-diagonal term
             {
-                if (i != j)
+                if (i != j && adjMatrix()[i][j] != complex<double> {0, 0})
                 {
-                    admit_matrix[i][j] = -adjMatrix()[i][j];
+                    admit_matrix[i][j] = complex<double> (-1) / adjMatrix()[i][j];
                 }
             }
         }
         return admit_matrix;
     }
+
+    void setBranch(int node1, int node2, complex<double> impedance)
+    {
+        setEdge(node1-1, node2-1, impedance);
+        setEdge(node2-1, node1-1, impedance);
+    }
+
 
 
 };
