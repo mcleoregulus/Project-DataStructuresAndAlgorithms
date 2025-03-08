@@ -21,7 +21,7 @@ class CircuitGraph : public Graphm {
     CircuitGraph(int numNode): Graphm(numNode) {    // 显式调用Graphm构造函数
 
         // Initialize admittance matrix
-        admit_matrix.resize(numNode, vector<complex<double>>(numNode, complex<double>(0, 0)));
+        admit_matrix.resize(numNode, vector<complex<double>>(numNode, complex<double> (0, 0)));
 
     }
 
@@ -29,20 +29,20 @@ class CircuitGraph : public Graphm {
 
     vector<vector<complex<double>>> admitMatrix()
     {
-        admit_matrix.resize(n(), vector<complex<double>>(n(), complex<double>(0, 0)));
+        admit_matrix.resize(n(), vector<complex<double>>(n(), complex<double> (0, 0)));
 
         for (int i = 0; i < n(); ++i)
         {
             complex<double> sum = 0; //  diagonal term
             for (int j = 0; j < n(); ++j)
             {
-                if (adjMatrix()[i][j] == complex<double> {0, 0}) {continue;}
+                if (adjMatrix()[i][j] == complex<double> (0, 0)) {continue;}
                 sum += complex<double> (1) / adjMatrix()[i][j];
             }
             admit_matrix[i][i] = sum;
             for (int j = 0; j < n(); ++j) // off-diagonal term
             {
-                if (i != j && adjMatrix()[i][j] != complex<double> {0, 0})
+                if (i != j && adjMatrix()[i][j] != complex<double> (0, 0))
                 {
                     admit_matrix[i][j] = complex<double> (-1) / adjMatrix()[i][j];
                 }
