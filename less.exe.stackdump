@@ -5,7 +5,7 @@ r8 =0000000000000003 r9 =8080808080808080 r10=FEFEFEFEFEFEFEFF
 r11=000000010041F7BC r12=0000000100422001 r13=0000000100422000
 r14=0000000000000006 r15=0000000000000000
 rbp=0000000800062740 rsp=00000000FFFFCB60
-program=C:\Program Files\Git\usr\bin\less.exe, pid 503, thread main
+program=C:\Program Files\Git\usr\bin\less.exe, pid 1583, thread main
 cs=0033 ds=002B es=002B fs=0053 gs=002B ss=002B
 Stack trace:
 Frame        Function    Args

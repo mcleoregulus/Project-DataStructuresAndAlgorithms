@@ -25,9 +25,9 @@ int main() {
     double modulus = abs(c1);  // 模
     double argument = arg(c1); // 幅角（弧度）
     cout << "Modulus of c1 = " << modulus << endl;
-    cout << "Argument of c1 = " << argument << " radians" << endl;
+    cout << "Argument of c1 = " << argument << " radians" << endl << real(c1);
     
-    cout << complex<double> (1)/c2;
+    // cout << complex<double> (1)/c2;
 
     return 0;
 }
