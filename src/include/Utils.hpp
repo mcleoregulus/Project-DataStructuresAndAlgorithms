@@ -8,10 +8,8 @@
 #include <cmath>
 
 using namespace std;
-typedef complex<double> Complex;
 
-
-void printMatrix(vector<vector<complex<double>>> matrix)
+void printMatrix(vector<vector<Complex>> matrix)
 {
     for (int i = 0; i < matrix.size(); i++)
     {
