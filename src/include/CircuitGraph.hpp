@@ -36,15 +36,15 @@ class CircuitGraph : public Graphm {
             complex<double> sum = 0; //  diagonal term
             for (int j = 0; j < n(); ++j)
             {
-                if (adjMatrix()[i][j] == complex<double> {0, 0}) {continue;}
-                sum += complex<double> (1) / adjMatrix()[i][j];
+                if (getAdjMatrix()[i][j] == complex<double> {0, 0}) {continue;}
+                sum += complex<double> (1) / getAdjMatrix()[i][j];
             }
             admit_matrix[i][i] = sum;
             for (int j = 0; j < n(); ++j) // off-diagonal term
             {
-                if (i != j && adjMatrix()[i][j] != complex<double> {0, 0})
+                if (i != j && getAdjMatrix()[i][j] != complex<double> {0, 0})
                 {
-                    admit_matrix[i][j] = complex<double> (-1) / adjMatrix()[i][j];
+                    admit_matrix[i][j] = complex<double> (-1) / getAdjMatrix()[i][j];
                 }
             }
         }
@@ -57,9 +57,9 @@ class CircuitGraph : public Graphm {
         setEdge(node2-1, node1-1, impedance);
     }
 
-    const vector<vector<complex<double>>>& getAdjMatrix() const {
-        return adjMatrix();
-    }
+    // const vector<vector<complex<double>>>& getAdjMatrix() const {
+    //     return adjMatrix();
+    // }
 
 };
 
