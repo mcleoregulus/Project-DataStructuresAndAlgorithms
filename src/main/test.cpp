@@ -7,14 +7,13 @@
 // #include "Djsktra.cpp"
 
 using namespace std;
+typedef complex<double> Complex;
+
 
 int main() {
     CircuitGraph my_circuit(4);
     // printMatrix(my_circuit.adjMatrix());
     // printMatrix(my_circuit.admitMatrix());
-
-    // my_circuit.setEdge(0, 1, {2, 4});
-    // my_circuit.setEdge(1, 0, {2, 4});
 
     my_circuit.setBranch(1, 2, {2, 4});
     my_circuit.setBranch(1, 3, {1, 1});
@@ -23,6 +22,8 @@ int main() {
 
     printMatrix(my_circuit.adjMatrix());
     printMatrix(my_circuit.admitMatrix());
+    vector<vector<Complex>> inv = invMatrix(my_circuit.admitMatrix());
+    printMatrix(inv);
 
     // my_circuit.delVertex(2);
     // printMatrix(my_circuit.adjMatrix());

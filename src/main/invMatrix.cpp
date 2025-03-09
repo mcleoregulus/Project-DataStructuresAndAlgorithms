@@ -1,30 +1,11 @@
-
-#ifndef UTILS_HPP
-#define UTILS_HPP
-
 #include <iostream>
 #include <vector>
 #include <complex>
 #include <cmath>
 
 using namespace std;
+
 typedef complex<double> Complex;
-
-
-void printMatrix(vector<vector<complex<double>>> matrix)
-{
-    for (int i = 0; i < matrix.size(); i++)
-    {
-        for (int j = 0; j < matrix.size(); j++)
-        {
-            cout << matrix[i][j] << "\t";
-        }
-        cout << endl;
-    }
-    cout << endl;
-};
-
-
 
 const double EPS = 1e-9;
 
@@ -55,7 +36,7 @@ vector<vector<Complex>> multiply(const vector<vector<Complex>>& a, const vector<
 }
 
 // 复数矩阵的LU分解求逆
-vector<vector<Complex>> invMatrix(const vector<vector<Complex>>& a) {
+vector<vector<Complex>> inverseMatrix(const vector<vector<Complex>>& a) {
     int n = a.size();
     vector<vector<Complex>> l(n, vector<Complex>(n, 0.0));
     vector<vector<Complex>> u(n, vector<Complex>(n, 0.0));
@@ -111,6 +92,22 @@ vector<vector<Complex>> invMatrix(const vector<vector<Complex>>& a) {
     return inv;
 }
 
+int main() {
+    vector<vector<Complex>> matrix = {
+        {complex<double>(1, 0), complex<double>(2, 0), complex<double>(3, 0)},
+        {complex<double>(4, 0), complex<double>(5, 1), complex<double>(6, 0)},
+        {complex<double>(7, 0), complex<double>(8, 0), complex<double>(10, 0)}
+    };
 
+    vector<vector<Complex>> inv = inverseMatrix(matrix);
 
-#endif  // UTILS_HPP
+    cout << "Inverse matrix:" << endl;
+    for (int i = 0; i < inv.size(); i++) {
+        for (int j = 0; j < inv.size(); j++) {
+            cout << inv[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
