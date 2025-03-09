@@ -1,16 +1,16 @@
 
-#ifndef DIJKSTRA_HPP
-#define DIJKSTRA_HPP
+// #ifndef DIJKSTRA_HPP
+// #define DIJKSTRA_HPP
 
-#include <vector>
-#include <complex>
-#include <limits>
-#include <cmath>
+// #include <vector>
+// #include <complex>
+// #include <limits>
+// #include <cmath>
 
-#include <queue>
-#include <unordered_map>
+// #include <queue>
+// #include <unordered_map>
 
-using namespace std;
+// using namespace std;
 
 // 定义一个大值，用于表示无穷大
 // const complex<double> INFINITY_COMPLEX = complex<double>(numeric_limits<double>::infinity(), 0);
@@ -73,42 +73,42 @@ using namespace std;
 //     }
 // }
 
-#include "graph.hpp"
+// #include "graph.hpp"
 
-// Compute shortest path distances from "s".
-// Return these distances in "D".
-void Dijkstra(Graph *G, double *D, int s)
-{
-    int i, v;
-    complex<double> w;
-    for (i = 0; i < G->n(); i++)
-    {
-        v = minVertex(G, D);
-        // Process the vertices
-        if (D[v] == INFINITY) // INFINITE
-            return;       // Unreachable vertices
-        G->setMark(v, 1); // VISITED
-        for (w = G->first(v); abs(w) < G->n(); w = G->next(v, w))
-            if (D[w] > (D[v] + G->weight(v, w)))
-                D[w] = D[v] + G->weight(v, w);
-    }
-}
+// // Compute shortest path distances from "s".
+// // Return these distances in "D".
+// void Dijkstra(Graph *G, double *D, int s)
+// {
+//     int i, v;
+//     complex<double> w;
+//     for (i = 0; i < G->n(); i++)
+//     {
+//         v = minVertex(G, D);
+//         // Process the vertices
+//         if (D[v] == INFINITY) // INFINITE
+//             return;       // Unreachable vertices
+//         G->setMark(v, 1); // VISITED
+//         for (w = G->first(v); abs(w) < G->n(); w = G->next(v, w))
+//             if (D[w] > (D[v] + G->weight(v, w)))
+//                 D[w] = D[v] + G->weight(v, w);
+//     }
+// }
 
-int minVertex(Graph *G, double *D) // 密集图
-{                               // Find min cost vertex
-    int i, v = -1;
-    // Initialize v to some unvisited vertex
-    for (i = 0; i < G->n(); i++)
-        if (G->getMark(i) == 0) // UNVISITED
-        {
-            v = i;
-            break;
-        }
-    for (i++; i < G->n(); i++)                     // Now find smallest D value
-        if ((G->getMark(i) == 0) && (D[i] < D[v])) // UNVISITED
-            v = i;
-    return v;
-}
+// int minVertex(Graph *G, double *D) // 密集图
+// {                               // Find min cost vertex
+//     int i, v = -1;
+//     // Initialize v to some unvisited vertex
+//     for (i = 0; i < G->n(); i++)
+//         if (G->getMark(i) == 0) // UNVISITED
+//         {
+//             v = i;
+//             break;
+//         }
+//     for (i++; i < G->n(); i++)                     // Now find smallest D value
+//         if ((G->getMark(i) == 0) && (D[i] < D[v])) // UNVISITED
+//             v = i;
+//     return v;
+// }
 
 
 
@@ -187,4 +187,4 @@ int minVertex(Graph *G, double *D) // 密集图
 //     cout << "\n";
 // }
 
-#endif // DIJKSTRA_HPP
+// #endif // DIJKSTRA_HPP

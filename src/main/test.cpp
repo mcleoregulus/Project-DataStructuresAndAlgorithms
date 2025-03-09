@@ -12,8 +12,8 @@ int main() {
     // printMatrix(my_circuit.adjMatrix());
     // printMatrix(my_circuit.admitMatrix());
 
-    // my_circuit.setEdge(0, 1, {2, 4});
-    // my_circuit.setEdge(1, 0, {2, 4});
+    my_circuit.setEdge(0, 1, {2, 4});
+    my_circuit.setEdge(1, 0, {2, 4});
 
     my_circuit.setBranch(1, 2, {2, 4});
     my_circuit.setBranch(1, 3, {1, 1});
@@ -23,9 +23,9 @@ int main() {
     printMatrix(my_circuit.adjMatrix());
     printMatrix(my_circuit.admitMatrix());
 
-    vector<complex<double>> D;
+    // vector<complex<double>> D;
     // Dijkstra(my_circuit.adjMatrix(), D, 1);
-    cout << D[0];
+    // cout << D[0];
 
     // my_circuit.delVertex(2);
     // printMatrix(my_circuit.adjMatrix());

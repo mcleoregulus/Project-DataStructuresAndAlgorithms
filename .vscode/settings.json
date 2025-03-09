@@ -5,6 +5,7 @@
         "ostream": "cpp",
         "new": "cpp",
         "complex": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "vector": "cpp"
     }
 }
