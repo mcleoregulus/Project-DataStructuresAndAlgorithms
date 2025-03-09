@@ -81,7 +81,7 @@ public:
     int getMark(int v) { return mark[v]; }
     void setMark(int v, int val) { mark[v] = val; }
 
-    vector<vector<complex<double>>> adjMatrix() { return matrix; }
+    vector<vector<complex<double>>> adjMatrix() const { return matrix; }
 
     void addVertex() {      // 新增节点
         numVertex++;

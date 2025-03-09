@@ -3,27 +3,49 @@
 // #include "../include/Graphm.hpp"
 #include "../include/CircuitGraph.hpp"
 #include "../include/Utils.hpp"
-
+#include "../include/CSVImporter.hpp"
+//#include "../include/CSVExporter.hpp"
 // #include "Djsktra.cpp"
 
 using namespace std;
 
 int main() {
-    CircuitGraph my_circuit(4);
+    //CircuitGraph my_circuit(4);
     // printMatrix(my_circuit.adjMatrix());
     // printMatrix(my_circuit.admitMatrix());
 
     // my_circuit.setEdge(0, 1, {2, 4});
     // my_circuit.setEdge(1, 0, {2, 4});
 
-    my_circuit.setBranch(1, 2, {2, 4});
-    my_circuit.setBranch(1, 3, {1, 1});
-    my_circuit.setBranch(2, 4, {3, 4});
-    my_circuit.setBranch(3, 4, {1, 2});
+    //my_circuit.setBranch(1, 2, {2, 4});
+    //my_circuit.setBranch(1, 3, {1, 1});
+    //my_circuit.setBranch(2, 4, {3, 4});
+    //my_circuit.setBranch(3, 4, {1, 2});
 
-    printMatrix(my_circuit.adjMatrix());
-    printMatrix(my_circuit.admitMatrix());
+    //printMatrix(my_circuit.adjMatrix());
+    //printMatrix(my_circuit.admitMatrix());
 
+    CSVImporter importer("../data/example.csv");
+
+    auto adjMatrix = importer.getAdjMatrix();
+    auto nodeMapping = importer.getNodeMapping();
+
+    // 输出邻接矩阵
+    std::cout << "Adjacency Matrix:" << std::endl;
+    for (const auto& row : adjMatrix) {
+        for (const auto& val : row) {
+            std::cout << "(" << val.real() << ", " << val.imag() << ") ";
+        }
+        std::cout << std::endl;
+    }
+
+    // 输出节点映射
+    std::cout << "\nNode Mapping:" << std::endl;
+    for (const auto& pair : nodeMapping) {
+        std::cout << pair.first << " -> " << pair.second << std::endl;
+    }
+
+    
     // my_circuit.delVertex(2);
     // printMatrix(my_circuit.adjMatrix());
     // printMatrix(my_circuit.admitMatrix());
