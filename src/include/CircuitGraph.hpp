@@ -4,7 +4,6 @@
 
 #include "Graphm.hpp"
 #include <iostream>
-#include <cassert>
 #include <complex>
 #include <vector>
 

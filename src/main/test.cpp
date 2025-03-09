@@ -12,9 +12,6 @@ int main() {
     // printMatrix(my_circuit.adjMatrix());
     // printMatrix(my_circuit.admitMatrix());
 
-    my_circuit.setEdge(0, 1, {2, 4});
-    my_circuit.setEdge(1, 0, {2, 4});
-
     my_circuit.setBranch(1, 2, {2, 4});
     my_circuit.setBranch(1, 3, {1, 1});
     my_circuit.setBranch(2, 4, {3, 4});
