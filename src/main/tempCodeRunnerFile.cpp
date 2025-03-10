@@ -1,6 +1,2 @@
-
-        for (int j = 0; j < 5; j++) {
-            cout << admitmatrix[i][j] << "\t";
-        }
-        cout << endl;
-    }
+    // printMatrix(my_circuit.getAdjMatrix());
+    // printMatrix(my_circuit.admitMatrix());

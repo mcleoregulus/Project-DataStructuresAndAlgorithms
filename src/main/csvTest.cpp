@@ -7,6 +7,8 @@
 #include <string>
 #include <stdexcept>
 
+#include "../include/CircuitGraph.hpp"
+
 using namespace std;
 
 int main() {
@@ -83,13 +85,22 @@ int main() {
     // 关闭文件
     file.close();
 
-    // 打印提取的数据
-    for (const auto& row : data) {
-        for (const auto& num : row) {
-            cout << num << " ";
+
+    int numVertex = 0;
+    for (int i = 0; i < data.size(); ++i) {
+        for (int j = 0; j < 2; ++j) {
+            cout << data[i][j] << " ";
+            data[i][j] > numVertex ? numVertex = data[i][j] : numVertex = numVertex;
         }
         cout << endl;
     }
+
+    cout << endl << numVertex;
+
+    CircuitGraph circuit(numVertex);
+
+
+
 
     return 0;
 }

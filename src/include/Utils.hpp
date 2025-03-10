@@ -10,16 +10,15 @@ using namespace std;
 
 void printMatrix(vector<vector<complex<double>>> matrix)
 {
-    for (int i = 0; i < matrix.size(); i++)
+    for (const auto &row : matrix)
     {
-        for (int j = 0; j < matrix.size(); j++)
+        for (const auto &num : row)
         {
-            cout << matrix[i][j] << "\t";
+            cout << num << "\t";
         }
         cout << endl;
     }
     cout << endl;
 };
 
-
-#endif  // UTILS_HPP
+#endif // UTILS_HPP
