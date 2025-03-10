@@ -11,6 +11,8 @@
 #include <complex>
 using namespace std;
 typedef complex<double> Complex;
+const int VISITED = 1;
+const int UNVISITED = 0;
 
 class Graph
 {
