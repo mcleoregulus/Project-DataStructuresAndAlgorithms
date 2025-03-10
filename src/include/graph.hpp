@@ -10,6 +10,7 @@
 
 #include <complex>
 using namespace std;
+typedef complex<double> Complex;
 
 class Graph
 {
@@ -34,7 +35,7 @@ public:
     // Set the weight for an edge
     // i, j: The vertices
     // wgt: Edge weight
-    virtual void setEdge(int v1, int v2, complex<double> wght) = 0; // ??
+    virtual void setEdge(int v1, int v2, Complex wght) = 0; // ??
     // Delete an edge
     // i, j: The vertices
     virtual void delEdge(int v1, int v2) = 0;
@@ -45,7 +46,7 @@ public:
     // Return an edge’s weight
     // i, j: The vertices
     // Return: The weight of edge i,j, or zero
-    virtual complex<double> weight(int v1, int v2) = 0; // changed type
+    virtual Complex weight(int v1, int v2) = 0; // changed type
     // Get and Set the mark value for a vertex
     // v: The vertex
     // val: The value to set
