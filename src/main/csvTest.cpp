@@ -90,18 +90,21 @@ int main() {
     int numVertex = 0;
     for (int i = 0; i < data.size(); ++i) {
         for (int j = 0; j < 2; ++j) {
-            // cout << data[i][j] << " ";
             data[i][j] > numVertex ? numVertex = data[i][j] : numVertex = numVertex;
         }
-        // cout << endl;
     }
 
-    cout << endl << numVertex << endl;
+    // cout << endl << numVertex << endl;
 
     CircuitGraph circuit(numVertex);
 
     for (const auto &row : data) {
-        circuit.setBranch(row[0], row[1], {row[2], row[3]});
+        Complex wgt = circuit.weight(row[0]-1, row[1]-1);
+        if (wgt != Complex(0, 0)) {
+            Complex new_wgt = (wgt * Complex(row[2], row[3])) / (wgt + Complex(row[2], row[3]));
+            circuit.setBranch(row[0], row[1], new_wgt);
+        }
+        else {circuit.setBranch(row[0], row[1], {row[2], row[3]});}
     }
     printMatrix(circuit.getAdjMatrix());
 

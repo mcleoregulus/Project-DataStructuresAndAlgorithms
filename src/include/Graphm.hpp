@@ -61,7 +61,6 @@ public:
     // Set edge (v1, v2) to "wt"
     void setEdge(int v1, int v2, Complex wt)
     {
-        // Assert(wt>0, "Illegal weight value");               // use cassert
         assert(real(wt) > 0 && "Illegal weight value");     // real part need to be positive
         if (matrix[v1][v2] == Complex(0, 0))
             numEdge++;

@@ -10,20 +10,25 @@
 using namespace std;
 
 int main() {
-    CircuitGraph my_circuit(4);
+    CircuitGraph my_circuit(0);
+    importFromCSV("example", my_circuit);
+    printMatrix(my_circuit.getAdjMatrix());
+    printMatrix(my_circuit.getAdmitMatrix());
+
+
+    // CircuitGraph my_circuit(4);
     // printMatrix(my_circuit.getAdjMatrix());
     // printMatrix(my_circuit.admitMatrix());
 
-    my_circuit.setEdge(0, 1, {2, 4});
-    my_circuit.setEdge(1, 0, {2, 4});
+    // my_circuit.setBranch(1, 2, {2, 4});
+    // my_circuit.setBranch(1, 3, {1, 1});
+    // my_circuit.setBranch(2, 4, {3, 4});
+    // my_circuit.setBranch(3, 4, {1, 2});
 
-    my_circuit.setBranch(1, 2, {2, 4});
-    my_circuit.setBranch(1, 3, {1, 1});
-    my_circuit.setBranch(2, 4, {3, 4});
-    my_circuit.setBranch(3, 4, {1, 2});
+    // printMatrix(my_circuit.getAdjMatrix());
+    // printMatrix(my_circuit.getAdmitMatrix());
 
-    printMatrix(my_circuit.getAdjMatrix());
-    printMatrix(my_circuit.getAdmitMatrix());
+    // cout << my_circuit.weight(0, 1);
 
     // CSVImporter importer("../data/example.csv");
 

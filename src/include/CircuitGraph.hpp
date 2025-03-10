@@ -57,10 +57,6 @@ class CircuitGraph : public Graphm {
         setEdge(node2-1, node1-1, impedance);
     }
 
-    // const vector<vector<Complex>>& getAdjMatrix() const {
-    //     return adjMatrix();
-    // }
-
 };
 
 
