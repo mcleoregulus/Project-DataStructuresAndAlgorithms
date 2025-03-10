@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void printMatrix(vector<vector<complex<double>>> matrix)
+void printMatrix(vector<vector<Complex>> matrix)
 {
     for (const auto &row : matrix)
     {

@@ -8,6 +8,7 @@
 #include <stdexcept>
 
 #include "../include/CircuitGraph.hpp"
+#include "../include/Utils.hpp"
 
 using namespace std;
 
@@ -89,15 +90,20 @@ int main() {
     int numVertex = 0;
     for (int i = 0; i < data.size(); ++i) {
         for (int j = 0; j < 2; ++j) {
-            cout << data[i][j] << " ";
+            // cout << data[i][j] << " ";
             data[i][j] > numVertex ? numVertex = data[i][j] : numVertex = numVertex;
         }
-        cout << endl;
+        // cout << endl;
     }
 
-    cout << endl << numVertex;
+    cout << endl << numVertex << endl;
 
     CircuitGraph circuit(numVertex);
+
+    for (const auto &row : data) {
+        circuit.setBranch(row[0], row[1], {row[2], row[3]});
+    }
+    printMatrix(circuit.getAdjMatrix());
 
 
 

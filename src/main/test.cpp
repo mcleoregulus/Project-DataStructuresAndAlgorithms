@@ -23,7 +23,7 @@ int main() {
     my_circuit.setBranch(3, 4, {1, 2});
 
     printMatrix(my_circuit.getAdjMatrix());
-    printMatrix(my_circuit.admitMatrix());
+    printMatrix(my_circuit.getAdmitMatrix());
 
     // CSVImporter importer("../data/example.csv");
 
@@ -70,8 +70,8 @@ int main() {
     // my_graph.setEdge(2, 3, {2,-6});
     // my_graph.setEdge(3, 2, {2,-6});
 
-    // // vector<vector<complex<double>>> admitmatrix = my_graph.admitMatrix();
-    // vector<vector<complex<double>>> adjmatrix = my_graph.adjMatrix();
+    // // vector<vector<Complex>> admitmatrix = my_graph.admitMatrix();
+    // vector<vector<Complex>> adjmatrix = my_graph.adjMatrix();
     // my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
     // cout << endl;
     // // my_graph.printMatrix(admitmatrix);  // 打印导纳矩阵
@@ -85,7 +85,7 @@ int main() {
     // int f = my_graph.first(1);
     // bool a = my_graph.isEdge(2, 3);
     // bool b = my_graph.isEdge(3, 2);
-    // complex<double> w = my_graph.weight(2, 3);
+    // Complex w = my_graph.weight(2, 3);
 
     // int e = my_graph.e();
     // int n = my_graph.n();
