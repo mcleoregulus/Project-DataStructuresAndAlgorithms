@@ -62,8 +62,8 @@ public:
     void setEdge(int v1, int v2, complex<double> wt)
     {
         // Assert(wt>0, "Illegal weight value");               // use cassert
-        // assert(real(wt) > 0 && "Illegal weight value");     // real part need to be positive
-        if (matrix[v1][v2] == complex<double>(0, 0)) // ???
+        assert(real(wt) > 0 && "Illegal weight value");     // real part need to be positive
+        if (matrix[v1][v2] == complex<double>(0, 0))
             numEdge++;
         matrix[v1][v2] = wt;
     }
