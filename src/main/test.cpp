@@ -1,6 +1,7 @@
 
 #include <iostream>
-// #include "../include/Graphm.hpp"
+#include "../include/Graphm.hpp"
+#include "../include/Graphl.hpp"
 #include "../include/CircuitGraph.hpp"
 #include "../include/Utils.hpp"
 // #include "../include/CSVImporter.hpp"
@@ -10,10 +11,20 @@
 using namespace std;
 
 int main() {
-    CircuitGraph my_circuit(0);
-    importFromCSV("example", my_circuit);
-    printMatrix(my_circuit.getAdjMatrix());
-    printMatrix(my_circuit.getAdmitMatrix());
+
+    Graphl my_graph(4);
+    // my_graph.setEdge(0, 3, {1, 2});
+    // cout << my_graph.weight(0,3);
+
+
+    // Graphm my_graph(4);
+
+
+
+    // CircuitGraph my_circuit(0);
+    // importFromCSV("example", my_circuit);
+    // printMatrix(my_circuit.getAdjMatrix());
+    // printMatrix(my_circuit.getAdmitMatrix());
 
 
     // CircuitGraph my_circuit(4);

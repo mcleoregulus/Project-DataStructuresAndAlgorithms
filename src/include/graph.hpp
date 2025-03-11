@@ -31,13 +31,13 @@ public:
     virtual int n() = 0;
     virtual int e() = 0;
     // Return v’s first neighbor
-    virtual int first(int v) = 0;   // ?
+    virtual int first(int v) = 0;
     // Return v’s next neighbor
-    virtual int next(int v, int w) = 0; // ?
+    virtual int next(int v, int w) = 0;
     // Set the weight for an edge
     // i, j: The vertices
     // wgt: Edge weight
-    virtual void setEdge(int v1, int v2, Complex wght) = 0; // ??
+    virtual void setEdge(int v1, int v2, Complex wght) = 0;
     // Delete an edge
     // i, j: The vertices
     virtual void delEdge(int v1, int v2) = 0;

@@ -1,10 +1,12 @@
+#ifndef GRAPHL_HPP
+#define GRAPHL_HPP
 
 #include "graph.hpp"
 #include "LList.hpp"
 
 class Edge
 {
-    int vert;
+    int vert;   // label?
     Complex wt;
 
 public:
@@ -89,7 +91,7 @@ public:
         return n(); // No neighbor
     }
     // Set edge (i, j) to "weight"
-    void setEdge(int i, int j, int weight)
+    void setEdge(int i, int j, Complex weight)
     {
         // Assert(weight>0, "May not set weight to 0");                     //assert
         Edge currEdge(j, weight);
@@ -148,3 +150,5 @@ public:
     int getMark(int v) { return mark[v]; }
     void setMark(int v, int val) { mark[v] = val; }
 };
+
+#endif
