@@ -6,7 +6,7 @@
 
 class Edge
 {
-    int vert;   // label?
+    int vert; // label?
     Complex wt;
 
 public:
@@ -25,11 +25,12 @@ public:
 };
 
 
+
+
 class Graphl : public Graph
 {
 private:
-    // List<Edge> **vertex;
-    LList<Edge> **vertex;
+    List<Edge> **vertex;
     int numVertex, numEdge;
     int *mark;
 
@@ -57,10 +58,7 @@ public:
         for (i = 0; i < numVertex; i++)
             mark[i] = UNVISITED;
         // Create and initialize adjacency lists
-
-        // vertex = (List<Edge> **)new List<Edge> *[numVertex];
-        vertex = (LList<Edge> **)new LList<Edge> *[numVertex];
-
+        vertex = (List<Edge> **)new List<Edge> *[numVertex];
         for (i = 0; i < numVertex; i++)
             vertex[i] = new LList<Edge>();
     }
@@ -90,10 +88,11 @@ public:
         }
         return n(); // No neighbor
     }
+
     // Set edge (i, j) to "weight"
     void setEdge(int i, int j, Complex weight)
     {
-        // Assert(weight>0, "May not set weight to 0");                     //assert
+        // assert(real(weight) > 0 && "May not set weight to 0");
         Edge currEdge(j, weight);
         if (isEdge(i, j))
         { // Edge already exists in graph
@@ -150,5 +149,6 @@ public:
     int getMark(int v) { return mark[v]; }
     void setMark(int v, int val) { mark[v] = val; }
 };
+
 
 #endif

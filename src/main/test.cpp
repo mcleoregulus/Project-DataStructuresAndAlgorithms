@@ -1,9 +1,9 @@
 
 #include <iostream>
-#include "../include/Graphm.hpp"
+// #include "../include/Graphm.hpp"
 #include "../include/Graphl.hpp"
-#include "../include/CircuitGraph.hpp"
-#include "../include/Utils.hpp"
+// #include "../include/CircuitGraph.hpp"
+// #include "../include/Utils.hpp"
 // #include "../include/CSVImporter.hpp"
 //#include "../include/CSVExporter.hpp"
 // #include "Djsktra.cpp"
@@ -13,8 +13,13 @@ using namespace std;
 int main() {
 
     Graphl my_graph(4);
-    // my_graph.setEdge(0, 3, {1, 2});
-    // cout << my_graph.weight(0,3);
+    my_graph.setEdge(0, 3, {1, 2});
+    my_graph.setEdge(0, 2, {1, 4});
+
+    cout << my_graph.weight(0, 2) << endl;
+    my_graph.delEdge(0, 2);
+    cout << my_graph.weight(0, 2) << endl;
+
 
 
     // Graphm my_graph(4);
