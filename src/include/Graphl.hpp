@@ -36,6 +36,7 @@ public:
     {
         Init(numVert);
     }
+    // Graphl() {} // LList init
     ~Graphl()
     {
         // Number of vertices, edges
@@ -159,6 +160,8 @@ public:
     }
     int getMark(int v) { return mark[v]; }
     void setMark(int v, int val) { mark[v] = val; }
+
+    LList<Edge> **getAdjList() { return vertex; }
 };
 
 #endif

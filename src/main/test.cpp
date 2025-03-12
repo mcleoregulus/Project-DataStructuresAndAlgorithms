@@ -1,24 +1,78 @@
 
 #include <iostream>
 // #include "../include/Graphm.hpp"
-#include "../include/Graphl.hpp"
 // #include "../include/CircuitGraph.hpp"
-// #include "../include/Utils.hpp"
 // #include "../include/CSVImporter.hpp"
 //#include "../include/CSVExporter.hpp"
 // #include "Djsktra.cpp"
+
+#include "../include/Utils.hpp"
+#include "../include/Graphl.hpp"
+#include "../include/CircuitGraphl.hpp"
+
 
 using namespace std;
 
 int main() {
 
-    Graphl my_graph(4);
-    my_graph.setEdge(0, 3, {1, 2});
-    my_graph.setEdge(0, 2, {1, 4});
+    CircuitGraphl my_graph(4);
+    // my_graph.printAdmitMatrix();
+    // cout << adj_list[0]->getValue().weight();
 
-    cout << my_graph.weight(0, 2) << endl;
-    my_graph.delEdge(0, 2);
-    cout << my_graph.weight(0, 2) << endl;
+    // Graphl my_graph(4);
+
+    my_graph.setEdge(0, 1, {2,-6});
+    my_graph.setEdge(1, 0, {2,-6});
+
+    my_graph.setEdge(0, 2, {1,-3});
+    my_graph.setEdge(2, 0, {1,-3});
+
+    my_graph.setEdge(1, 2, {2/3,-2});
+    my_graph.setEdge(2, 1, {2/3,-2});
+
+    my_graph.setEdge(1, 3, {1,-3});
+    my_graph.setEdge(3, 1, {1,-3});
+
+    my_graph.setEdge(2, 3, {2,-6});
+    my_graph.setEdge(3, 2, {2,-6});
+
+    cout << my_graph.n() << endl;
+    my_graph.getAdmitMatrix();
+
+
+    // int f = my_graph.first(1);
+    // int next = my_graph.next(1, 0);
+    // bool a = my_graph.isEdge(2, 3);
+    // bool b = my_graph.isEdge(3, 2);
+    // Complex w = my_graph.weight(2, 3);
+
+    // int e = my_graph.e();
+    // int n = my_graph.n();
+
+    // cout << my_graph.getMark(1) << endl;
+    // my_graph.setMark(1, VISITED);
+    // cout << my_graph.getMark(1) << endl;
+
+    // cout << ": " << a << " " << b << " " << e << " " << n << " " << w << " " << f << " " << next;
+
+    // // vector<vector<Complex>> admitmatrix = my_graph.admitMatrix();
+    // vector<vector<Complex>> adjmatrix = my_graph.adjMatrix();
+    // my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
+    // cout << endl;
+    // // my_graph.printMatrix(admitmatrix);  // 打印导纳矩阵
+
+    // // my_graph.addVertex(); // 新增节点
+    // my_graph.delVertex(2);   // 删除指定节点
+    // adjmatrix = my_graph.adjMatrix();
+    // my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
+
+
+    // my_graph.setEdge(0, 3, {1, 2});
+    // my_graph.setEdge(0, 2, {1, 4});
+
+    // cout << my_graph.weight(0, 2) << endl;
+    // my_graph.delEdge(0, 2);
+    // cout << my_graph.weight(0, 2) << endl;
 
 
 
@@ -76,42 +130,9 @@ int main() {
 
     // Graphm my_graph(4);     //无向图，电力系统分析 part2 tab2
 
-    // my_graph.setEdge(0, 1, {2,-6});
-    // my_graph.setEdge(1, 0, {2,-6});
-
-    // my_graph.setEdge(0, 2, {1,-3});
-    // my_graph.setEdge(2, 0, {1,-3});
-
-    // my_graph.setEdge(1, 2, {2/3,-2});
-    // my_graph.setEdge(2, 1, {2/3,-2});
-
-    // my_graph.setEdge(1, 3, {1,-3});
-    // my_graph.setEdge(3, 1, {1,-3});
-
-    // my_graph.setEdge(2, 3, {2,-6});
-    // my_graph.setEdge(3, 2, {2,-6});
-
-    // // vector<vector<Complex>> admitmatrix = my_graph.admitMatrix();
-    // vector<vector<Complex>> adjmatrix = my_graph.adjMatrix();
-    // my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
-    // cout << endl;
-    // // my_graph.printMatrix(admitmatrix);  // 打印导纳矩阵
-
-    // // my_graph.addVertex(); // 新增节点
-    // my_graph.delVertex(2);   // 删除指定节点
-    // adjmatrix = my_graph.adjMatrix();
-    // my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
 
 
-    // int f = my_graph.first(1);
-    // bool a = my_graph.isEdge(2, 3);
-    // bool b = my_graph.isEdge(3, 2);
-    // Complex w = my_graph.weight(2, 3);
 
-    // int e = my_graph.e();
-    // int n = my_graph.n();
-
-    // cout << ": " << a << " " << b << " " << e << " " << n << " " << w << " " << f;
 
     return 0;
 }

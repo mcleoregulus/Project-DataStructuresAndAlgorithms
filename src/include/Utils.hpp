@@ -10,24 +10,35 @@
 #include <sstream>
 #include <stdexcept>
 
-#include "CircuitGraph.hpp"
+#include "CircuitGraphm.hpp"
+#include "CircuitGraphl.hpp"
 
 using namespace std;
 
-void printMatrix(vector<vector<Complex>> matrix)
-{
-    for (const auto &row : matrix)
-    {
-        for (const auto &num : row)
-        {
-            cout << num << "\t";
-        }
-        cout << endl;
-    }
-    cout << endl;
-};
 
-void importFromMatrix(vector<vector<double>> &data, CircuitGraph &circuit)
+// void printMatrix(Complex** matrix) {
+//     for (int i = 0; i < n; ++i) {
+//         for (int j = 0; j < n; ++j) {
+//             cout << matrix[i][j] << "\t";
+//         }
+//         cout << endl;
+//     }
+// }
+
+// void printMatrix(vector<vector<Complex>> matrix)
+// {
+//     for (const auto &row : matrix)
+//     {
+//         for (const auto &num : row)
+//         {
+//             cout << num << "\t";
+//         }
+//         cout << endl;
+//     }
+//     cout << endl;
+// };
+
+void importFromMatrix(vector<vector<double>> &data, CircuitGraphm &circuit)
 {
     int numVertex = 0;
     for (int i = 0; i < data.size(); ++i)
@@ -58,7 +69,7 @@ void importFromMatrix(vector<vector<double>> &data, CircuitGraph &circuit)
     }
 }
 
-int importFromCSV(const string &filename, CircuitGraph &circuit)
+int importFromCSV(const string &filename, CircuitGraphm &circuit)
 {
     string filepath = "../../data/" + filename + ".csv";
 
