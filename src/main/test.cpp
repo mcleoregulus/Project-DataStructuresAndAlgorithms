@@ -36,9 +36,9 @@ int main() {
     my_graph.setEdge(2, 3, {2,-6});
     my_graph.setEdge(3, 2, {2,-6});
 
-    cout << my_graph.n() << endl;
+    // cout << my_graph.n() << endl;
     my_graph.getAdmitMatrix();
-
+    // cout << my_graph.getAdjList()[0][0].length();
 
     // int f = my_graph.first(1);
     // int next = my_graph.next(1, 0);

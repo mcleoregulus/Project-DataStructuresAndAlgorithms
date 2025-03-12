@@ -37,8 +37,18 @@ public:
     Complex **getAdmitMatrix()
     {
         for (int i = 0; i < n(); ++i) {
-            cout << getAdjList()[i]->length();
-            // cout << getAdjList()[i]->getValue().weight();
+            // for (int j = 0; i < getAdjList()[i]->length(); ++j) {
+            //     // cout << getAdjList()[i][j]->getValue().weight() << endl;
+            //     cout << getAdjList()[i]->getValue()[j].getValue().weight();
+            // }
+            
+            cout << getAdjList()[i]->getValue().weight() << endl;
+            cout << getAdjList()[i]->currPos() << endl;
+            
+            LList<Edge> **list = getAdjList();
+            list[i]->next();
+            // cout << getAdjList()[i]->getValue().weight() << endl;
+
         }
 
 

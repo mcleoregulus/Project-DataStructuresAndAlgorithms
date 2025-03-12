@@ -107,9 +107,15 @@ public:
         for (int i = 0; i < pos; i++)
             curr = curr->next;
     }
-    const E &getValue() const
+    // const E &getValue() const
+    // { // Return current element
+    //     assert(curr->next != NULL && "No value");
+    //     return curr->next->element;
+    // }
+    E &getValue()
     { // Return current element
         assert(curr->next != NULL && "No value");
         return curr->next->element;
     }
+
 };

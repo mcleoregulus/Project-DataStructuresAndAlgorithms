@@ -36,6 +36,8 @@ public:
     // pos: The position to make current.
     virtual void moveToPos(int pos) = 0;
     // Return: The current element.
-    virtual const E &getValue() const = 0;
+    // virtual const E &getValue() const = 0;
+    virtual E &getValue() = 0;
+
 };
 
