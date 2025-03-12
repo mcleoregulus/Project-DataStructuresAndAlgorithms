@@ -4,7 +4,7 @@
 #include "list.hpp"
 #include "link.hpp"
 
-const int MAX_SIZE = 100;
+const int DEFAULT_SIZE = 100;
 // Linked list implementation
 template <typename E>
 class LList : public List<E>
@@ -30,7 +30,7 @@ private:
     }
 
 public:
-    LList(int size = MAX_SIZE) { init(); } // Constructor
+    LList(int size = DEFAULT_SIZE) { init(); } // Constructor
     ~LList() { removeall(); }                 // Destructor
     void print() const;                       // Print list contents
     void clear()

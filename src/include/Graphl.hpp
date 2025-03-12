@@ -24,13 +24,10 @@ public:
     Complex weight() { return wt; }
 };
 
-
-
-
 class Graphl : public Graph
 {
 private:
-    List<Edge> **vertex;
+    LList<Edge> **vertex;
     int numVertex, numEdge;
     int *mark;
 
@@ -46,7 +43,8 @@ public:
         // Destructor
         delete[] mark; // Return dynamically allocated memory
         for (int i = 0; i < numVertex; i++)
-            delete[] vertex[i];
+            // delete[] vertex[i];
+            delete vertex[i];
         delete[] vertex;
     }
     void Init(int n)
@@ -58,10 +56,23 @@ public:
         for (i = 0; i < numVertex; i++)
             mark[i] = UNVISITED;
         // Create and initialize adjacency lists
-        vertex = (List<Edge> **)new List<Edge> *[numVertex];
+        vertex = (LList<Edge> **)new LList<Edge> *[numVertex];
         for (i = 0; i < numVertex; i++)
             vertex[i] = new LList<Edge>();
     }
+    // void Init(int n) {   // 配套修改？
+    //     numVertex = n;
+    //     numEdge = 0;
+    //     mark = new int[numVertex];
+    //     for (int i = 0; i < numVertex; i++) {
+    //         mark[i] = UNVISITED;
+    //     }
+    //     vertex = new List<Edge>*[numVertex];
+    //     for (int i = 0; i < numVertex; i++) {
+    //         vertex[i] = new List<Edge>();
+    //     }
+    // }
+
     int n() { return numVertex; } // Number of vertices
     int e() { return numEdge; }   // Number of edges
     int first(int v)
@@ -149,6 +160,5 @@ public:
     int getMark(int v) { return mark[v]; }
     void setMark(int v, int val) { mark[v] = val; }
 };
-
 
 #endif
