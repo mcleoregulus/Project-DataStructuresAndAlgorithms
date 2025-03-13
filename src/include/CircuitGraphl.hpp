@@ -6,7 +6,6 @@
 #include <iostream>
 #include <cassert>
 #include <complex>
-#include <vector>
 
 using namespace std;
 

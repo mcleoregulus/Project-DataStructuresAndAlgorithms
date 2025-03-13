@@ -1,3 +1,5 @@
+#ifndef LLIST_HPP
+#define LLIST_HPP
 
 #include <cstddef>
 #include <cassert>
@@ -118,4 +120,26 @@ public:
         return curr->next->element;
     }
 
+    // Link<E>* getHead() const { return head; } // 获取头指针
+    // Link<E>* getCurr() const { return curr; } // 获取当前指针
+
+    // 通过索引获取元素
+    // E getElementAt(int index) const
+    // {
+    //     if (index < 0 || index >= cnt)
+    //     {
+    //         throw std::out_of_range("Index out of range");
+    //     }
+
+    //     Link<E> *temp = head;
+    //     for (int i = 0; i <= index; i++)
+    //     {
+    //         temp = temp->next;
+    //     }
+    //     return temp->element;
+    // }
+
+
 };
+
+#endif // LLIST_HPP

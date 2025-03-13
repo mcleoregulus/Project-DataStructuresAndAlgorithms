@@ -37,8 +37,18 @@ int main() {
     my_graph.setEdge(3, 2, {2,-6});
 
     // cout << my_graph.n() << endl;
-    my_graph.getAdmitMatrix();
+    // my_graph.getAdmitMatrix();
     // cout << my_graph.getAdjList()[0][0].length();
+
+    LList<Edge> **list = my_graph.getAdjList();
+    
+    for (int i = 0; i < my_graph.n(); i++) {
+        list[i]->moveToStart();
+        cout << list[i]->getValue().vertex() << " ";
+        // list.next();
+    }
+    cout << endl;
+
 
     // int f = my_graph.first(1);
     // int next = my_graph.next(1, 0);

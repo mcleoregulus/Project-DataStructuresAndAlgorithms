@@ -7,7 +7,7 @@
 #include <string>
 #include <stdexcept>
 
-#include "../include/CircuitGraph.hpp"
+#include "../include/CircuitGraphm.hpp"
 #include "../include/Utils.hpp"
 
 using namespace std;
@@ -96,7 +96,7 @@ int main() {
 
     // cout << endl << numVertex << endl;
 
-    CircuitGraph circuit(numVertex);
+    CircuitGraphm circuit(numVertex);
 
     for (const auto &row : data) {
         Complex wgt = circuit.weight(row[0]-1, row[1]-1);
@@ -106,7 +106,7 @@ int main() {
         }
         else {circuit.setBranch(row[0], row[1], {row[2], row[3]});}
     }
-    printMatrix(circuit.getAdjMatrix());
+    // printMatrix(circuit.getAdjMatrix());
 
 
 
