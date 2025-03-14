@@ -1,4 +1,4 @@
 
-        cout << list.getElementAt(i) << " ";
-    }
-    cout << endl;
+    g.setEdge(0, 1, 10); // 添加边0→1，权重10
+    g.setEdge(0, 2, 5);  // 添加边0→2，权重5
+    g.delEdge(0, 1);     // 删除边0→1

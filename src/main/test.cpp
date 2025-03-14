@@ -3,52 +3,59 @@
 // #include "../include/Graphm.hpp"
 // #include "../include/CircuitGraph.hpp"
 // #include "../include/CSVImporter.hpp"
-//#include "../include/CSVExporter.hpp"
+// #include "../include/CSVExporter.hpp"
 // #include "Djsktra.cpp"
 
-#include "../include/Utils.hpp"
-#include "../include/Graphl.hpp"
-#include "../include/CircuitGraphl.hpp"
+// #include "../include/Utils.hpp"
+// #include "../include/Graphl.hpp"
+// #include "../include/CircuitGraphl.hpp"
 
+#include "../include/Graphl2.hpp"
 
 using namespace std;
 
-int main() {
+int main()
+{
 
-    CircuitGraphl my_graph(4);
+    Graphl g(5);         // 创建一个有5个顶点的图
+    // g.setEdge(0, 1, 10); // 添加边0→1，权重10
+    // g.setEdge(0, 2, 5);  // 添加边0→2，权重5
+    // g.delEdge(0, 1);     // 删除边0→1
+    
+
+    // CircuitGraphl my_graph(4);
     // my_graph.printAdmitMatrix();
     // cout << adj_list[0]->getValue().weight();
 
     // Graphl my_graph(4);
 
-    my_graph.setEdge(0, 1, {2,-6});
-    my_graph.setEdge(1, 0, {2,-6});
+    // my_graph.setEdge(0, 1, {2,-6});
+    // my_graph.setEdge(1, 0, {2,-6});
 
-    my_graph.setEdge(0, 2, {1,-3});
-    my_graph.setEdge(2, 0, {1,-3});
+    // my_graph.setEdge(0, 2, {1,-3});
+    // my_graph.setEdge(2, 0, {1,-3});
 
-    my_graph.setEdge(1, 2, {2/3,-2});
-    my_graph.setEdge(2, 1, {2/3,-2});
+    // my_graph.setEdge(1, 2, {2/3,-2});
+    // my_graph.setEdge(2, 1, {2/3,-2});
 
-    my_graph.setEdge(1, 3, {1,-3});
-    my_graph.setEdge(3, 1, {1,-3});
+    // my_graph.setEdge(1, 3, {1,-3});
+    // my_graph.setEdge(3, 1, {1,-3});
 
-    my_graph.setEdge(2, 3, {2,-6});
-    my_graph.setEdge(3, 2, {2,-6});
+    // my_graph.setEdge(2, 3, {2,-6});
+    // my_graph.setEdge(3, 2, {2,-6});
 
     // cout << my_graph.n() << endl;
     // my_graph.getAdmitMatrix();
     // cout << my_graph.getAdjList()[0][0].length();
 
-    LList<Edge> **list = my_graph.getAdjList();
-    
-    for (int i = 0; i < my_graph.n(); i++) {
-        list[i]->moveToStart();
-        cout << list[i]->getValue().vertex() << " ";
-        // list.next();
-    }
-    cout << endl;
+    // LList<Edge> **list = my_graph.getAdjList();
 
+    // for (int i = 0; i < my_graph.n(); i++) {
+    //     list[i]->moveToStart();
+    //     cout << list[i]->getValue().vertex() << " ";
+    //     // list.next();
+    // }
+    // cout << endl;
 
     // int f = my_graph.first(1);
     // int next = my_graph.next(1, 0);
@@ -76,7 +83,6 @@ int main() {
     // adjmatrix = my_graph.adjMatrix();
     // my_graph.printMatrix(adjmatrix);    // 打印邻接矩阵
 
-
     // my_graph.setEdge(0, 3, {1, 2});
     // my_graph.setEdge(0, 2, {1, 4});
 
@@ -84,17 +90,12 @@ int main() {
     // my_graph.delEdge(0, 2);
     // cout << my_graph.weight(0, 2) << endl;
 
-
-
     // Graphm my_graph(4);
-
-
 
     // CircuitGraph my_circuit(0);
     // importFromCSV("example", my_circuit);
     // printMatrix(my_circuit.getAdjMatrix());
     // printMatrix(my_circuit.getAdmitMatrix());
-
 
     // CircuitGraph my_circuit(4);
     // printMatrix(my_circuit.getAdjMatrix());
@@ -130,19 +131,12 @@ int main() {
     //     std::cout << pair.first << " -> " << pair.second << std::endl;
     // }
 
-    
     // my_circuit.delVertex(2);
     // printMatrix(my_circuit.adjMatrix());
     // printMatrix(my_circuit.admitMatrix());
     // cout << my_circuit.n();
 
-
-
     // Graphm my_graph(4);     //无向图，电力系统分析 part2 tab2
-
-
-
-
 
     return 0;
 }
