@@ -12,6 +12,9 @@
 using namespace std;
 typedef complex<double> Complex;
 
+const int UNVISITED = 0;
+const int VISITED = 1;
+
 class Graph
 {
 private:
