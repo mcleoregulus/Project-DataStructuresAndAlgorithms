@@ -9,34 +9,49 @@ class Graphl : public Graph
 {
 private:
     // List<Edge> **vertex;
-    LList<LList<Edge> *> *vertex;
+    LList<LList<Edge> *> *vertex; // 邻接表使用二重单链表，构建动态图
     int numVertex, numEdge;
-    int *mark;
+    // int *mark;
+    LList<int> *mark;       // 动态mark数组也需单链表
 
 public:
-    Graphl(int numVert)
-    {
-        Init(numVert);
-    }
+    Graphl() {Init();}
+    Graphl(int numVert) {Init(numVert);}
     ~Graphl()
     {
         // Number of vertices, edges
         // Pointer to mark array
         // Destructor
-        delete[] mark; // Return dynamically allocated memory
+        // delete[] mark; // Return dynamically allocated memory
         // for (int i = 0; i < numVertex; i++)
         //     delete[] vertex[i];
         // delete[] vertex;
+        mark->clear();
+        delete mark;
+        vertex->moveToStart();
+        while (vertex->currPos() < vertex->length())
+        {
+            vertex->getValue()->clear();
+            delete vertex->getValue();
+            vertex->next();
+        }    
         vertex->clear();
         delete vertex;
+    }
+    void Init()
+    {
+        numVertex = 0;
+        numEdge = 0;
+        mark = new LList<int>();
+        vertex = new LList<LList<Edge> *>();
     }
     void Init(int n)
     {
         numVertex = n;
         numEdge = 0;
-        mark = new int[n]; // Initialize mark array
+        mark = new LList<int>(); // Initialize mark array
         for (int i = 0; i < numVertex; i++)
-            mark[i] = UNVISITED;
+            mark->append(UNVISITED);
         // Create and initialize adjacency lists
         // vertex = (List<Edge> **)new List<Edge> *[numVertex];
         // for (i = 0; i < numVertex; i++)
@@ -140,8 +155,18 @@ public:
         else
             return 0;
     }
-    int getMark(int v) { return mark[v]; }
-    void setMark(int v, int val) { mark[v] = val; }
+    // int getMark(int v) { return mark[v]; }
+    // void setMark(int v, int val) { mark[v] = val; }
+    int getMark(int v) {
+        mark->moveToPos(v);
+        return mark->getValue();
+    }
+    void setMark(int v, int val) {
+        mark->moveToPos(v);
+        mark->remove();
+        mark->insert(val);
+    }
+
 };
 
 #endif // GRAPHL_HPP

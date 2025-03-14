@@ -11,6 +11,8 @@
 using namespace std;
 
 int main() {
+    // Graphl my_graph; // 允许定义空图
+    // cout << my_graph.n();
     Graphl my_graph(4);
     my_graph.setEdge(0, 1, {2,-6});
     my_graph.setEdge(1, 0, {2,-6});
