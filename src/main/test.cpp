@@ -14,27 +14,50 @@ int main() {
     // Graphl my_graph; // 允许定义空图
     // cout << my_graph.n();
     Graphl my_graph(4);
-    my_graph.setEdge(0, 1, {2,-6});
+    
+    my_graph.setEdge(0, 1, {2,-6}); // 增加条件用于自动扩充图
     my_graph.setEdge(1, 0, {2,-6});
     my_graph.setEdge(0, 2, {1,-3});
     my_graph.setEdge(2, 0, {1,-3});
-    my_graph.setEdge(1, 2, {2/3,-2});
-    my_graph.setEdge(2, 1, {2/3,-2});
+    my_graph.setEdge(1, 2, {2./3,-2});
+    my_graph.setEdge(2, 1, {2./3,-2});
     my_graph.setEdge(1, 3, {1,-3});
     my_graph.setEdge(3, 1, {1,-3});
     my_graph.setEdge(2, 3, {2,-6});
     my_graph.setEdge(3, 2, {2,-6});
 
-    int f = my_graph.first(1);
-    bool a = my_graph.isEdge(2, 3);
-    bool b = my_graph.isEdge(3, 2);
-    Complex w = my_graph.weight(2, 3);
+    my_graph.printAdjList();
+    my_graph.printMark();
+    my_graph.setMark(2, 556);
+    my_graph.printMark();
+
+    // my_graph.addVertex(2);
+    my_graph.delVertex(2);
+    my_graph.printAdjList();
+    my_graph.printMark();
+    cout << my_graph.n() << " " << my_graph.e();
+
+
+    // int f = my_graph.first(1);
+    // bool a = my_graph.isEdge(2, 3);
+    // bool b = my_graph.isEdge(3, 2);
+    // Complex w = my_graph.weight(2, 3);
 
     int e = my_graph.e();
     int n = my_graph.n();
 
-    cout << ": " << a << " " << b << " " << e << " " << n << " " << w << " " << f << endl;
-    cout << my_graph.next(1, 0);
+    // cout << ": " << a << " " << b << " " << e << " " << n << " " << w << " " << f << endl;
+
+    // my_graph.addVertex();
+    // my_graph.delVertex();
+    // cout << my_graph.n();
+    // my_graph.delVertex();
+    // cout << my_graph.next(1, 0);
+
+    // my_graph.setMark(5, 5);
+    // my_graph.setMark(1, 4);
+    // my_graph.getMark(0);    
+
 
     
 
