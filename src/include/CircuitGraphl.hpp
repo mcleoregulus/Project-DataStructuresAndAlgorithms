@@ -12,17 +12,17 @@ using namespace std;
 class CircuitGraphl : public Graphl {
     private:
 
-    int numNode;
+    // int numNode;
     Complex ** admit_matrix;
     // vector<vector<Complex>> admit_matrix; // Use vector of vectors for admittance matrix
 
 
     public:
 
-    CircuitGraphl(): Graphl() {numNode = 0;}
+    CircuitGraphl(): Graphl() {}
     CircuitGraphl(int numVertx): Graphl(numVertx) {    // 显式调用Graphm构造函数
 
-        numNode = numVertx;
+        // numNode = numVertx;
         // Initialize admittance matrix
 
     }

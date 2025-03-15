@@ -2,7 +2,7 @@
 #include <iostream>
 // #include "../include/Graphm.hpp"
 // #include "../include/CircuitGraph.hpp"
-// #include "../include/Utils.hpp"
+#include "../include/Utils.hpp"
 // #include "../include/CSVImporter.hpp"
 // #include "../include/CSVExporter.hpp"
 // #include "Djsktra.cpp"
@@ -12,30 +12,21 @@
 using namespace std;
 
 int main() {
-    // Graphl my_graph; // 允许定义空图
-    // cout << my_graph.n();
-    Graphl my_circuit(4);
+
+    Graphl my_circuit;
+    importFromCSV("example", my_circuit);
     
-    // my_graph.setEdge(0, 1, {2,-6}); // 增加条件用于自动扩充图
-    // my_graph.setEdge(1, 0, {2,-6});
-    // my_graph.setEdge(0, 2, {1,-3});
-    // my_graph.setEdge(2, 0, {1,-3});
-    // my_graph.setEdge(1, 2, {2./3,-2});
-    // my_graph.setEdge(2, 1, {2./3,-2});
-    // my_graph.setEdge(1, 3, {1,-3});
-    // my_graph.setEdge(3, 1, {1,-3});
-    // my_graph.setEdge(2, 3, {2,-6});
-    // my_graph.setEdge(3, 2, {2,-6});
+    // my_circuit.setBranch(1, 2, {2, 4});
+    // my_circuit.setBranch(1, 3, {1, 1});
+    // my_circuit.setBranch(2, 4, {3, 4});
+    // my_circuit.setBranch(3, 4, {1, 2});
 
-    // CircuitGraphl my_circuit(4);
-    my_circuit.setBranch(1, 2, {2, 4});
-    my_circuit.setBranch(1, 3, {1, 1});
-    my_circuit.setBranch(2, 4, {3, 4});
-    my_circuit.setBranch(3, 4, {1, 2});
-
+    my_circuit.setMark(2, 5);
     my_circuit.printAdjList();
     my_circuit.printMark();
-    my_circuit.getAdmitMatrix();
+    my_circuit.printAdmitMatrix();
+    // printMatrix(my_circuit.getAdmitMatrix(), my_circuit.n());
+
 
     
 

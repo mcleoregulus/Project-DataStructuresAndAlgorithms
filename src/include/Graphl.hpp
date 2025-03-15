@@ -323,8 +323,17 @@ public:
             // 对角线元素：总导纳
             admit_matrix[i][i] = sum;
         }
-    
         return admit_matrix;
+    }
+
+    void printAdmitMatrix() {
+        Complex** admit_matrix = getAdmitMatrix();
+        for (int i = 0; i < numVertex; ++i) {
+            for (int j = 0; j < numVertex; ++j) {
+                cout << admit_matrix[i][j] << "\t";
+            }
+            cout << endl;
+        }
     }
 
     void setBranch(int node1, int node2, Complex impedance)

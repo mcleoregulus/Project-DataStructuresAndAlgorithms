@@ -7,7 +7,7 @@
 #include <string>
 #include <stdexcept>
 
-#include "../include/CircuitGraph.hpp"
+#include "../include/CircuitGraphm.hpp"
 #include "../include/Utils.hpp"
 
 using namespace std;
