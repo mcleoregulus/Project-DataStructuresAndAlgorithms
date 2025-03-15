@@ -1,8 +1,13 @@
+#ifndef LLIST_HPP
+#define LLIST_HPP
 
+#include <iostream>
 #include <cstddef>
 #include <cassert>
 #include "list.hpp"
 #include "link.hpp"
+
+const int defaultSize = 100;
 
 // Linked list implementation
 template <typename E>
@@ -29,9 +34,17 @@ private:
     }
 
 public:
-    LList(int size = 100) { init(); } // Constructor
+    LList(int size = defaultSize) { init(); } // Constructor
     ~LList() { removeall(); }                 // Destructor
-    void print() const;                       // Print list contents
+    void print() const {
+        Link<E> *temp = head->next; // 从第一个有效节点开始（跳过头节点）
+        while (temp != NULL)        // 遍历链表
+        {
+            cout << temp->element << " "; // 输出当前节点的值
+            temp = temp->next;                 // 移动到下一个节点
+        }
+        cout << endl; // 输出换行符，结束打印
+    };                       // Print list contents
     void clear()
     {
         removeall();
@@ -112,3 +125,5 @@ public:
         return curr->next->element;
     }
 };
+
+#endif // LLIST_HPP

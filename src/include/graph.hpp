@@ -12,6 +12,9 @@
 using namespace std;
 typedef complex<double> Complex;
 
+const int UNVISITED = 0;
+const int VISITED = 1;
+
 class Graph
 {
 private:
@@ -24,6 +27,7 @@ public:
     // Default constructor
     virtual ~Graph() {} // Base destructor
     // Initialize a graph of n vertices
+    // virtual void Init() = 0;
     virtual void Init(int n) = 0;
     // Return: the number of vertices and edges
     virtual int n() = 0;

@@ -1,19 +1,77 @@
 
 #include <iostream>
 // #include "../include/Graphm.hpp"
-#include "../include/CircuitGraph.hpp"
+// #include "../include/CircuitGraph.hpp"
 #include "../include/Utils.hpp"
 // #include "../include/CSVImporter.hpp"
-//#include "../include/CSVExporter.hpp"
+// #include "../include/CSVExporter.hpp"
 // #include "Djsktra.cpp"
+#include "../include/Graphl.hpp"
+// #include "../include/CircuitGraphl.hpp"
 
 using namespace std;
 
 int main() {
-    CircuitGraph my_circuit(0);
+
+    Graphl my_circuit;
     importFromCSV("example", my_circuit);
-    printMatrix(my_circuit.getAdjMatrix());
-    printMatrix(my_circuit.getAdmitMatrix());
+    
+    // my_circuit.setBranch(1, 2, {2, 4});
+    // my_circuit.setBranch(1, 3, {1, 1});
+    // my_circuit.setBranch(2, 4, {3, 4});
+    // my_circuit.setBranch(3, 4, {1, 2});
+
+    my_circuit.setMark(2, 5);
+    my_circuit.printAdjList();
+    my_circuit.printMark();
+    my_circuit.printAdmitMatrix();
+    // printMatrix(my_circuit.getAdmitMatrix(), my_circuit.n());
+
+
+    
+
+
+    
+
+    // my_graph.printAdjList();
+    // my_graph.printMark();
+    // my_graph.setMark(2, 556);
+    // my_graph.printMark();
+
+    // // my_graph.addVertex(2);
+    // my_graph.delVertex(2);
+    // my_graph.printAdjList();
+    // my_graph.printMark();
+    // cout << my_graph.n() << " " << my_graph.e();
+
+
+    // int f = my_graph.first(1);
+    // bool a = my_graph.isEdge(2, 3);
+    // bool b = my_graph.isEdge(3, 2);
+    // Complex w = my_graph.weight(2, 3);
+
+    // int e = my_graph.e();
+    // int n = my_graph.n();
+
+    // cout << ": " << a << " " << b << " " << e << " " << n << " " << w << " " << f << endl;
+
+    // my_graph.addVertex();
+    // my_graph.delVertex();
+    // cout << my_graph.n();
+    // my_graph.delVertex();
+    // cout << my_graph.next(1, 0);
+
+    // my_graph.setMark(5, 5);
+    // my_graph.setMark(1, 4);
+    // my_graph.getMark(0);    
+
+
+    
+
+    // CircuitGraph my_circuit(0);
+    // importFromCSV("example", my_circuit);
+    // printMatrix(my_circuit.getAdjMatrix());
+    // printMatrix(my_circuit.getAdmitMatrix());
 
 
     // CircuitGraph my_circuit(4);

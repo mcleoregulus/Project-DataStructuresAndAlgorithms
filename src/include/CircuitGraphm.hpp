@@ -1,6 +1,6 @@
 
-#ifndef CIRCUIT_GRAPH_HPP
-#define CIRCUIT_GRAPH_HPP
+#ifndef CIRCUIT_GRAPHM_HPP
+#define CIRCUIT_GRAPHM_HPP
 
 #include "Graphm.hpp"
 #include <iostream>
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class CircuitGraph : public Graphm {
+class CircuitGraphm : public Graphm {
     private:
 
     vector<vector<Complex>> admit_matrix; // Use vector of vectors for admittance matrix
@@ -18,14 +18,14 @@ class CircuitGraph : public Graphm {
 
     public:
 
-    CircuitGraph(int numNode): Graphm(numNode) {    // 显式调用Graphm构造函数
+    CircuitGraphm(int numNode): Graphm(numNode) {    // 显式调用Graphm构造函数
 
         // Initialize admittance matrix
         admit_matrix.resize(numNode, vector<Complex>(numNode, Complex(0, 0)));
 
     }
 
-    ~CircuitGraph() {}
+    ~CircuitGraphm() {}
 
     vector<vector<Complex>> getAdmitMatrix()
     {
@@ -60,4 +60,4 @@ class CircuitGraph : public Graphm {
 };
 
 
-#endif // CIRCUIT_GRAPH_HPP
+#endif // CIRCUIT_GRAPHM_HPP
