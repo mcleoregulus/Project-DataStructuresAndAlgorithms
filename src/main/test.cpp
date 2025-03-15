@@ -7,35 +7,51 @@
 // #include "../include/CSVExporter.hpp"
 // #include "Djsktra.cpp"
 #include "../include/Graphl.hpp"
+// #include "../include/CircuitGraphl.hpp"
 
 using namespace std;
 
 int main() {
     // Graphl my_graph; // 允许定义空图
     // cout << my_graph.n();
-    Graphl my_graph(4);
+    Graphl my_circuit(4);
     
-    my_graph.setEdge(0, 1, {2,-6}); // 增加条件用于自动扩充图
-    my_graph.setEdge(1, 0, {2,-6});
-    my_graph.setEdge(0, 2, {1,-3});
-    my_graph.setEdge(2, 0, {1,-3});
-    my_graph.setEdge(1, 2, {2./3,-2});
-    my_graph.setEdge(2, 1, {2./3,-2});
-    my_graph.setEdge(1, 3, {1,-3});
-    my_graph.setEdge(3, 1, {1,-3});
-    my_graph.setEdge(2, 3, {2,-6});
-    my_graph.setEdge(3, 2, {2,-6});
+    // my_graph.setEdge(0, 1, {2,-6}); // 增加条件用于自动扩充图
+    // my_graph.setEdge(1, 0, {2,-6});
+    // my_graph.setEdge(0, 2, {1,-3});
+    // my_graph.setEdge(2, 0, {1,-3});
+    // my_graph.setEdge(1, 2, {2./3,-2});
+    // my_graph.setEdge(2, 1, {2./3,-2});
+    // my_graph.setEdge(1, 3, {1,-3});
+    // my_graph.setEdge(3, 1, {1,-3});
+    // my_graph.setEdge(2, 3, {2,-6});
+    // my_graph.setEdge(3, 2, {2,-6});
 
-    my_graph.printAdjList();
-    my_graph.printMark();
-    my_graph.setMark(2, 556);
-    my_graph.printMark();
+    // CircuitGraphl my_circuit(4);
+    my_circuit.setBranch(1, 2, {2, 4});
+    my_circuit.setBranch(1, 3, {1, 1});
+    my_circuit.setBranch(2, 4, {3, 4});
+    my_circuit.setBranch(3, 4, {1, 2});
 
-    // my_graph.addVertex(2);
-    my_graph.delVertex(2);
-    my_graph.printAdjList();
-    my_graph.printMark();
-    cout << my_graph.n() << " " << my_graph.e();
+    my_circuit.printAdjList();
+    my_circuit.printMark();
+    my_circuit.getAdmitMatrix();
+
+    
+
+
+    
+
+    // my_graph.printAdjList();
+    // my_graph.printMark();
+    // my_graph.setMark(2, 556);
+    // my_graph.printMark();
+
+    // // my_graph.addVertex(2);
+    // my_graph.delVertex(2);
+    // my_graph.printAdjList();
+    // my_graph.printMark();
+    // cout << my_graph.n() << " " << my_graph.e();
 
 
     // int f = my_graph.first(1);
@@ -43,8 +59,8 @@ int main() {
     // bool b = my_graph.isEdge(3, 2);
     // Complex w = my_graph.weight(2, 3);
 
-    int e = my_graph.e();
-    int n = my_graph.n();
+    // int e = my_graph.e();
+    // int n = my_graph.n();
 
     // cout << ": " << a << " " << b << " " << e << " " << n << " " << w << " " << f << endl;
 

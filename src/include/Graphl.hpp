@@ -170,7 +170,7 @@ public:
         mark->insert(val);
     }
 
-    const LList<LList<Edge> *> *getAdjList() const { return vertex; }
+    LList<LList<Edge> *> *getAdjList() const { return vertex; }
 
     void addVertex(int v = 1)
     {
@@ -282,6 +282,58 @@ public:
         }
         cout << endl;
     }
+
+    Complex** getAdmitMatrix() {
+        // 获取邻接表
+        LList<LList<Edge> *> *const &adjList = getAdjList();
+    
+        // 初始化导纳矩阵
+        Complex** admit_matrix = new Complex*[numVertex];
+        for (int i = 0; i < numVertex; i++) {
+            admit_matrix[i] = new Complex[numVertex];
+            for (int j = 0; j < numVertex; j++) {
+                admit_matrix[i][j] = Complex(0, 0); // 初始化为0
+            }
+        }
+    
+        // 遍历每个顶点
+        for (int i = 0; i < numVertex; i++) {
+            Complex sum = Complex(0, 0); // 对角线元素的和
+    
+            // 获取当前顶点的邻接边
+            adjList->moveToPos(i);
+            LList<Edge> *currEdges = adjList->getValue();
+    
+            // 遍历邻接边
+            currEdges->moveToStart();
+            while (currEdges->currPos() < currEdges->length()) {
+                Edge e = currEdges->getValue();
+                int j = e.vertex(); // 相连的顶点
+                Complex weight = e.weight(); // 边的权重
+    
+                // 非对角线元素：负导纳
+                admit_matrix[i][j] = Complex(-1, 0) / weight;
+    
+                // 累加对角线元素
+                sum += Complex(1, 0) / weight;
+    
+                currEdges->next();
+            }
+    
+            // 对角线元素：总导纳
+            admit_matrix[i][i] = sum;
+        }
+    
+        return admit_matrix;
+    }
+
+    void setBranch(int node1, int node2, Complex impedance)
+    {
+        setEdge(node1-1, node2-1, impedance);
+        setEdge(node2-1, node1-1, impedance);
+    }
+
+
 };
 
 #endif // GRAPHL_HPP
