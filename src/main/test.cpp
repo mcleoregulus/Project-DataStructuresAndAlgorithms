@@ -14,12 +14,18 @@ using namespace std;
 int main() {
 
     Graphl my_circuit;
-    importFromCSV("example", my_circuit);
+    // Graphl my_circuit(4);
     
+    cout << my_circuit.n() << endl;
+
+    importFromCSV("example", my_circuit);
+
     // my_circuit.setBranch(1, 2, {2, 4});
     // my_circuit.setBranch(1, 3, {1, 1});
     // my_circuit.setBranch(2, 4, {3, 4});
     // my_circuit.setBranch(3, 4, {1, 2});
+
+    cout << my_circuit.n() << endl;
 
     my_circuit.setMark(2, 5);
     my_circuit.printAdjList();

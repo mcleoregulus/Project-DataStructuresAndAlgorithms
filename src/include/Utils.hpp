@@ -31,32 +31,21 @@ void printMatrix(Complex** matrix, int size) {
 
 void importFromMatrix(double** &data, Graphl &circuit, int datasize)
 {
-    int numVertex = 0;
-    for (int i = 0; i < datasize; ++i)
-    {
-        for (int j = 0; j < 2; ++j)
-        {
-            data[i][j] > numVertex ? numVertex = data[i][j] : numVertex = numVertex;
-        }
-    }
-
-    while (circuit.n() < numVertex)
-    {
-        circuit.addVertex();
-    }
-
-    // for (const auto &row : data)
     for(int i = 0; i < datasize; ++i)
     {
-        Complex wgt = circuit.weight(data[i][0] - 1, data[i][1] - 1);
-        if (wgt != Complex(0, 0))
-        {
-            Complex new_wgt = (wgt * Complex(data[i][2], data[i][3])) / (wgt + Complex(data[i][2], data[i][3]));
-            circuit.setBranch(data[i][0], data[i][1], new_wgt);
-        }
-        else
-        {
+        if (circuit.n() < data[i][0] || circuit.n() < data[i][1]) {
             circuit.setBranch(data[i][0], data[i][1], {data[i][2], data[i][3]});
+        }
+        else {
+            Complex wgt = circuit.weight(data[i][0] - 1, data[i][1] - 1);
+            if (wgt != Complex(0, 0))
+            {
+                Complex new_wgt = (wgt * Complex(data[i][2], data[i][3])) / (wgt + Complex(data[i][2], data[i][3]));
+                circuit.setBranch(data[i][0], data[i][1], new_wgt);
+            }
+            else {
+                circuit.setBranch(data[i][0], data[i][1], {data[i][2], data[i][3]});
+            }
         }
     }
 }
