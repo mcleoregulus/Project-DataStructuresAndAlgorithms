@@ -29,9 +29,9 @@ void printMatrix(Complex** matrix, int size) {
 }
 
 
-void importFromMatrix(double** &data, Graphl &circuit, int datasize)
+void importFromMatrix(double** &data, Graphl &circuit, int numBranch)
 {
-    for(int i = 0; i < datasize; ++i)
+    for(int i = 0; i < numBranch; ++i)
     {
         if (circuit.n() < data[i][0] || circuit.n() < data[i][1]) {
             circuit.setBranch(data[i][0], data[i][1], {data[i][2], data[i][3]});
@@ -64,7 +64,7 @@ int importFromCSV(const string &filename, Graphl &circuit)
 
     string line;
     // vector<vector<double>> data;
-    int datasize = 0;
+    int numBranch = 0;
     double** data = new double*[MAX_SIZE];
 
     // 跳过标题行
@@ -133,22 +133,22 @@ int importFromCSV(const string &filename, Graphl &circuit)
 
         // 将提取的数字添加到二维vector中
         // data.push_back({num1, num2, num3, num4});
-        data[datasize] = new double[4]; 
-        data[datasize][0] = num1;
-        data[datasize][1] = num2;
-        data[datasize][2] = num3;
-        data[datasize][3] = num4;
-        datasize++;
-        if (datasize >= MAX_SIZE) {
+        data[numBranch] = new double[4]; 
+        data[numBranch][0] = num1;
+        data[numBranch][1] = num2;
+        data[numBranch][2] = num3;
+        data[numBranch][3] = num4;
+        numBranch++;
+        if (numBranch >= MAX_SIZE) {
             cerr << "Error: Data size exceeds MAX_SIZE!" << endl;
             break;
         }
     }
 
     file.close();
-    importFromMatrix(data, circuit, datasize);
+    importFromMatrix(data, circuit, numBranch);
 
-    for (int i = 0; i < MAX_SIZE; i++) {
+    for (int i = 0; i < numBranch; i++) {
         delete[] data[i];
     }
     delete[] data;
