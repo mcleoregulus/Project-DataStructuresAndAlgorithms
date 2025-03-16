@@ -19,6 +19,7 @@ int main() {
     cout << my_circuit.n() << endl;
 
     importFromCSV("example", my_circuit);
+    // cout << importFromCSV("example", my_circuit);
 
     // my_circuit.setBranch(1, 2, {2, 4});
     // my_circuit.setBranch(1, 3, {1, 1});

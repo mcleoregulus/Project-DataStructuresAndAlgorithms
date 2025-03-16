@@ -139,17 +139,16 @@ int importFromCSV(const string &filename, Graphl &circuit)
         data[datasize][2] = num3;
         data[datasize][3] = num4;
         datasize++;
+        if (datasize >= MAX_SIZE) {
+            cerr << "Error: Data size exceeds MAX_SIZE!" << endl;
+            break;
+        }
     }
 
-    // 关闭文件
     file.close();
-    for(int i = MAX_SIZE; i > datasize; --i) {
-        delete[] data[i];
-    }
-    
     importFromMatrix(data, circuit, datasize);
 
-    for (int i = 0; i < datasize; i++) {
+    for (int i = 0; i < MAX_SIZE; i++) {
         delete[] data[i];
     }
     delete[] data;
