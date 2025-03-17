@@ -348,6 +348,11 @@ public:
         setEdge(node1 - 1, node2 - 1, impedance);
         setEdge(node2 - 1, node1 - 1, impedance);
     }
+
+    vector<vector<double>> getAdjMatrix() {
+        
+        
+    }
 };
 
 #endif // GRAPHL_HPP
