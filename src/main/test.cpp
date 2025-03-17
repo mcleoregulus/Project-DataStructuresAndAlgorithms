@@ -14,7 +14,6 @@ using namespace std;
 int main() {
 
     Graphl my_circuit;
-    // Graphl my_circuit(4);
     
     cout << my_circuit.n() << endl;
 
@@ -35,19 +34,15 @@ int main() {
     // printMatrix(my_circuit.getAdmitMatrix(), my_circuit.n());
 
 
-    
-
-
-    
-
     // my_graph.printAdjList();
     // my_graph.printMark();
     // my_graph.setMark(2, 556);
     // my_graph.printMark();
 
     // // my_graph.addVertex(2);
-    // my_graph.delVertex(2);
-    // my_graph.printAdjList();
+    // my_circuit.delVertex(2);
+    // my_circuit.printAdjList();
+    // my_circuit.printAdmitMatrix();
     // my_graph.printMark();
     // cout << my_graph.n() << " " << my_graph.e();
 

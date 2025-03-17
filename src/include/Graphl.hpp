@@ -9,14 +9,13 @@ class Graphl : public Graph
 {
 private:
     // List<Edge> **vertex;
-    LList<LList<Edge> *> *vertex; // 邻接表使用二重单链表，构建动态图
+    LList<LList<Edge> *> *vertex; // 邻接表使用二重指针单链表，构建动态图
     int numVertex, numEdge;
     // int *mark;
     LList<int> *mark; // 动态mark数组也需单链表
 
 public:
-    Graphl() { Init(); }
-    Graphl(int numVert) { Init(numVert); }
+    Graphl(int numVert = 0) { Init(numVert); }
     ~Graphl()
     {
         // Number of vertices, edges
@@ -39,14 +38,7 @@ public:
         // vertex->clear();
         delete vertex;
     }
-    void Init()
-    {
-        numVertex = 0;
-        numEdge = 0;
-        mark = new LList<int>();
-        vertex = new LList<LList<Edge> *>();
-    }
-    void Init(int n)
+    void Init(int n = 0)
     {
         numVertex = n;
         numEdge = 0;
