@@ -1,0 +1,12 @@
+digraph CircuitGraph {
+    rankdir=LR;
+    node [shape=circle];
+    1 [label="Node 1\n220.00-0.00j V"];
+    2 [label="Node 2\n232.50+6.25j V"];
+    3 [label="Node 3\n238.75+9.37j V"];
+    4 [label="Node 4\n227.50+3.75j V"];
+    2 -> 1 [label="Z=2.00+1.00j Ω\nI=6.25-0.00j A"];
+    4 -> 1 [label="Z=2.00+1.00j Ω\nI=3.75-0.00j A"];
+    3 -> 2 [label="Z=1.00+0.50j Ω\nI=6.25-0.00j A"];
+    3 -> 4 [label="Z=3.00+1.50j Ω\nI=3.75-0.00j A"];
+}

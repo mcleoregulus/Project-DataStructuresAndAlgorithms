@@ -3,11 +3,12 @@
 
 // #include "CircuitGraph.hpp"
 #include "Graphl.hpp"
-// #include <Eigen/Dense>
 #include <vector>
 #include <complex>
 #include <map>
 #include <string>
+// #include <Eigen/Dense>
+#include "../libs/eigen-3.4.0/Eigen/Dense"
 
 using namespace std;
 using namespace Eigen;

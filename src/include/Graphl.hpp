@@ -305,7 +305,7 @@ public:
 
             // 获取当前顶点的邻接边
             adjList->moveToPos(i);
-            LList<Edge> *currEdges = adjList->getValue();
+            LList<Edge> *const &currEdges = adjList->getValue();
 
             // 遍历邻接边
             currEdges->moveToStart();
@@ -349,10 +349,35 @@ public:
         setEdge(node2 - 1, node1 - 1, impedance);
     }
 
-    vector<vector<double>> getAdjMatrix() {
-        
-        
+    // 邻接表转邻接矩阵
+    Complex ** getAdjMatrix() {
+        LList<LList<Edge> *> *const &adjList = getAdjList();
+
+        Complex **matrix = new Complex *[numVertex];
+        for (int i = 0; i < numVertex; i++)
+        {
+            matrix[i] = new Complex[numVertex];
+            for (int j = 0; j < numVertex; j++)
+            {
+                matrix[i][j] = Complex(0, 0);
+            }
+        }
+
+        adjList->moveToStart();
+        while (adjList->currPos() < adjList->length()) {
+
+            LList<Edge> *const &currEdges = adjList->getValue();
+            currEdges->moveToStart();
+            while (currEdges->currPos() < currEdges->length()) {
+                matrix[adjList->currPos()][currEdges->getValue().vertex()] = currEdges->getValue().weight();
+                currEdges->next();
+            }
+            adjList->next();
+        }
+        return matrix;
     }
+
+    
 };
 
 #endif // GRAPHL_HPP

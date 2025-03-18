@@ -47,6 +47,9 @@
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp"
-    }
+        "typeinfo": "cpp",
+        "dense": "cpp",
+        "geometry": "cpp"
+    },
+    "cmake.sourceDirectory": "D:/课程资料/数据结构与算法/Project/src/libs/eigen-3.4.0/test"
 }
