@@ -58,7 +58,7 @@ public:
     int first(int v)
     { // Return first neighbor of "v"
         vertex->moveToPos(v);
-        LList<Edge> *currVert = vertex->getValue();
+        LList<Edge> *const &currVert = vertex->getValue();
         if (currVert->length() == 0)
             return numVertex;
         // No neighbor
@@ -70,7 +70,7 @@ public:
     int next(int v, int w)
     {
         vertex->moveToPos(v);
-        LList<Edge> *currVert = vertex->getValue();
+        LList<Edge> *const &currVert = vertex->getValue();
         Edge it;
         if (isEdge(v, w))
         {
@@ -93,7 +93,7 @@ public:
             addVertex();
         }
         vertex->moveToPos(i);
-        LList<Edge> *currVert = vertex->getValue();
+        LList<Edge> *const &currVert = vertex->getValue();
         Edge currEdge(j, weight);
         if (isEdge(i, j))
         { // Edge already exists in graph
@@ -103,9 +103,7 @@ public:
         else
         { // Keep neighbors sorted by vertex index
             numEdge++;
-            for (currVert->moveToStart();
-                 currVert->currPos() < currVert->length();
-                 currVert->next())
+            for (currVert->moveToStart(); currVert->currPos() < currVert->length(); currVert->next())
             {
                 Edge temp = currVert->getValue();
                 if (temp.vertex() > j)
@@ -117,7 +115,7 @@ public:
     void delEdge(int i, int j)
     { // Delete edge (i, j)
         vertex->moveToPos(i);
-        LList<Edge> *currVert = vertex->getValue();
+        LList<Edge> *const &currVert = vertex->getValue();
         if (isEdge(i, j))
         {
             currVert->remove();
@@ -127,7 +125,7 @@ public:
     bool isEdge(int i, int j)
     { // Is (i,j) an edge?
         vertex->moveToPos(i);
-        LList<Edge> *currVert = vertex->getValue();
+        LList<Edge> *const &currVert = vertex->getValue();
         Edge it;
         for (currVert->moveToStart();
              currVert->currPos() < currVert->length();
@@ -143,7 +141,7 @@ public:
     Complex weight(int i, int j)
     { // Return weight of (i, j)
         vertex->moveToPos(i);
-        LList<Edge> *currVert = vertex->getValue();
+        LList<Edge> *const &currVert = vertex->getValue();
         Edge curr;
         if (isEdge(i, j))
         {
@@ -198,7 +196,7 @@ public:
                 continue;
             }
             vertex->moveToPos(i);
-            LList<Edge> *currVert = vertex->getValue();
+            LList<Edge> *const &currVert = vertex->getValue();
             // Edge it;
             for (currVert->moveToStart(); currVert->currPos() < currVert->length(); currVert->next())
             {
@@ -256,7 +254,7 @@ public:
         for (int i = 0; i < numVertex; i++)
         {
             adjList->moveToPos(i);
-            LList<Edge> *currVertEdges = adjList->getValue();
+            LList<Edge> *const &currVertEdges = adjList->getValue();
             cout << "Vertex " << i << " -> ";
             currVertEdges->moveToStart();
             while (currVertEdges->currPos() < currVertEdges->length())
