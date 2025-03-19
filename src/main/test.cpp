@@ -16,7 +16,7 @@ int main() {
     Graphl my_circuit;
     // Graphl my_circuit(4); // 默认生成空图
     
-    cout << my_circuit.n() << endl;
+    // cout << my_circuit.n() << endl;
 
     importFromCSV("example", my_circuit);
     // cout << importFromCSV("example", my_circuit);
@@ -26,16 +26,27 @@ int main() {
     // my_circuit.setBranch(2, 4, {3, 4});
     // my_circuit.setBranch(3, 4, {1, 2});
 
-    cout << my_circuit.n() << endl;
+    // cout << my_circuit.n() << endl;
+    
 
     
-    my_circuit.setMark(2, 5);
+    // my_circuit.setMark(2, 5);
     my_circuit.printAdjList();
-    my_circuit.printMark();
-    my_circuit.printAdmitMatrix();
-    my_circuit.getAdjMatrix();
-    printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
+    // cout << my_circuit.e() << endl;
+    // my_circuit.printMark();
+    // my_circuit.printAdmitMatrix();
+    // my_circuit.getAdjMatrix();
+    // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
     // printMatrix(my_circuit.getAdmitMatrix(), my_circuit.n());
+
+    my_circuit.delVertex(2);
+    my_circuit.printAdjList();
+    // cout << my_circuit.e() << endl;
+    // my_circuit.getAdjMatrix();
+    // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
+    // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
+    // my_circuit.printAdmitMatrix(); // 重复调用两个矩阵卡死
+
 
 
     // my_graph.printAdjList();
