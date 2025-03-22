@@ -32,6 +32,18 @@ int main() {
     
     // my_circuit.setMark(2, 5);
     my_circuit.printAdjList();
+    // my_circuit.printAdmitMatrix();
+    printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
+    my_circuit.delVertex(0);
+    my_circuit.printAdjList();
+    printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
+    // my_circuit.printAdmitMatrix();
+    // my_circuit.getAdmitMatrix();
+    my_circuit.delVertex(1);
+    my_circuit.printAdjList();
+    // my_circuit.printAdmitMatrix();
+    printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());// 邻接矩阵有问题
+
     // cout << my_circuit.e() << endl;
     // my_circuit.printMark();
     // my_circuit.printAdmitMatrix();
@@ -39,8 +51,12 @@ int main() {
     // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
     // printMatrix(my_circuit.getAdmitMatrix(), my_circuit.n());
 
-    my_circuit.delVertex(2);
-    my_circuit.printAdjList();
+
+    // my_circuit.printMark();
+    // my_circuit.delVertex(0);
+    // my_circuit.printAdjList();
+    // my_circuit.printAdmitMatrix();
+    // my_circuit.printMark();
     // cout << my_circuit.e() << endl;
     // my_circuit.getAdjMatrix();
     // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
