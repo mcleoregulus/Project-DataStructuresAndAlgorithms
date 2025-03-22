@@ -88,7 +88,7 @@ public:
     {
         assert(real(weight) > 0 && "May not set resistance to negative");
 
-        while (numVertex - 1 < i || numVertex < j) // 自动增加顶点
+        while (numVertex < i + 1 || numVertex < j + 1) // 自动增加顶点
         {
             addVertex();
         }
@@ -189,8 +189,12 @@ public:
 
         // 删除与该顶点相关的所有边: 1.遍历所有顶点，删除它们与v相连的边
         LList<LList<Edge> *> *const &adjList = getAdjList();
-        for (adjList->moveToStart(); adjList->currPos() < adjList->length(); adjList->next()) {
-            if (adjList->currPos() == v) {continue;}
+        for (adjList->moveToStart(); adjList->currPos() < adjList->length(); adjList->next())
+        {
+            if (adjList->currPos() == v)
+            {
+                continue;
+            }
 
             LList<Edge> *const &currVert = adjList->getValue();
             for (currVert->moveToStart(); currVert->currPos() < currVert->length(); currVert->next())
@@ -205,7 +209,7 @@ public:
                 }
             }
         }
-        
+
         // 2. 删除该顶点的邻接表
         vertex->moveToPos(v);
         numEdge -= vertex->getValue()->length();
@@ -219,10 +223,12 @@ public:
         numVertex--;
     }
 
-    void printAdjList() {
+    void printAdjList()
+    {
         LList<LList<Edge> *> *const &adjList = vertex;
 
-        for (adjList->moveToStart(); adjList->currPos() < adjList->length(); adjList->next()) {
+        for (adjList->moveToStart(); adjList->currPos() < adjList->length(); adjList->next())
+        {
 
             LList<Edge> *const &currVert = adjList->getValue();
             cout << "Vertex " << adjList->currPos() << " -> ";
@@ -316,7 +322,8 @@ public:
     }
 
     // 邻接表转邻接矩阵
-    Complex ** getAdjMatrix() {
+    Complex **getAdjMatrix()
+    {
 
         Complex **matrix = new Complex *[numVertex];
         for (int i = 0; i < numVertex; i++)
@@ -330,11 +337,13 @@ public:
 
         LList<LList<Edge> *> *const &adjList = getAdjList();
         adjList->moveToStart();
-        while (adjList->currPos() < adjList->length()) {
+        while (adjList->currPos() < adjList->length())
+        {
 
             LList<Edge> *const &currEdges = adjList->getValue();
             currEdges->moveToStart();
-            while (currEdges->currPos() < currEdges->length()) {
+            while (currEdges->currPos() < currEdges->length())
+            {
                 matrix[adjList->currPos()][currEdges->getValue().vertex()] = currEdges->getValue().weight();
                 currEdges->next();
             }
@@ -342,8 +351,6 @@ public:
         }
         return matrix;
     }
-
-    
 };
 
 #endif // GRAPHL_HPP
