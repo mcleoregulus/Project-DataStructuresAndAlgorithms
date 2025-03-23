@@ -32,16 +32,17 @@ int main() {
     
     // my_circuit.setMark(2, 5);
     my_circuit.printAdjList();
-    // my_circuit.printAdmitMatrix();
+    my_circuit.printAdmitMatrix();
     printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
     my_circuit.delVertex(0);
+    // my_circuit.addVertex();
     my_circuit.printAdjList();
     printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
-    // my_circuit.printAdmitMatrix();
+    my_circuit.printAdmitMatrix();
     // my_circuit.getAdmitMatrix();
-    my_circuit.delVertex(1);
+    my_circuit.delVertex(0);
     my_circuit.printAdjList();
-    // my_circuit.printAdmitMatrix();
+    my_circuit.printAdmitMatrix();
     printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());// 邻接矩阵有问题
 
     // cout << my_circuit.e() << endl;

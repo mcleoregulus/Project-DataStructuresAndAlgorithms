@@ -188,7 +188,7 @@ public:
         }
 
         // 删除与该顶点相关的所有边: 1.遍历所有顶点，删除它们与v相连的边
-        LList<LList<Edge> *> *const &adjList = getAdjList();
+        LList<LList<Edge> *> *const &adjList = vertex;
         for (adjList->moveToStart(); adjList->currPos() < adjList->length(); adjList->next())
         {
             if (adjList->currPos() == v)
@@ -219,6 +219,26 @@ public:
         // 3. 删除该顶点的mark标记
         mark->moveToPos(v);
         mark->remove();
+
+        // 4. 调整顶点索引: 如果删除的不是最后一个顶点，需要调整后续顶点的索引
+        if (v != numVertex - 1)
+        {
+            // 遍历所有顶点的邻接表，调整顶点索引
+            for (vertex->moveToStart(); vertex->currPos() < vertex->length(); vertex->next())
+            {
+                LList<Edge> *const &currVert = adjList->getValue();
+                for (currVert->moveToStart(); currVert->currPos() < currVert->length(); currVert->next())
+                {
+                    Edge temp = currVert->getValue();
+                    if (temp.vertex() > v)
+                    {
+                        // 如果顶点索引大于v，减1
+                        currVert->remove();
+                        currVert->insert(Edge(temp.vertex()-1,temp.weight()));
+                    }
+                }
+            }
+        }
 
         numVertex--;
     }
@@ -322,19 +342,28 @@ public:
             }
         }
 
-        LList<LList<Edge> *> *const &adjList = getAdjList();
-        adjList->moveToStart();
-        while (adjList->currPos() < adjList->length())
-        {
+        // LList<LList<Edge> *> *const &adjList = vertex;
+        // adjList->moveToStart();
+        // while (adjList->currPos() < adjList->length())
+        // {
 
-            LList<Edge> *const &currEdges = adjList->getValue();
-            currEdges->moveToStart();
-            while (currEdges->currPos() < currEdges->length())
+        //     LList<Edge> *const &currEdges = adjList->getValue();
+        //     currEdges->moveToStart();
+        //     while (currEdges->currPos() < currEdges->length())
+        //     {
+        //         matrix[adjList->currPos()][currEdges->getValue().vertex()] = currEdges->getValue().weight();
+        //         currEdges->next();
+        //     }
+        //     adjList->next();
+        // }
+
+        for (vertex->moveToStart(); vertex->currPos() < vertex->length(); vertex->next())
+        {
+            LList<Edge> *const &currVert = vertex->getValue();
+            for (currVert->moveToStart(); currVert->currPos() < currVert->length(); currVert->next())
             {
-                matrix[adjList->currPos()][currEdges->getValue().vertex()] = currEdges->getValue().weight();
-                currEdges->next();
+                matrix[vertex->currPos()][currVert->getValue().vertex()] = currVert->getValue().weight();
             }
-            adjList->next();
         }
         return matrix;
     }
