@@ -220,6 +220,26 @@ public:
         mark->moveToPos(v);
         mark->remove();
 
+        // 4. 调整顶点索引: 如果删除的不是最后一个顶点，需要调整后续顶点的索引
+        if (v != numVertex - 1)
+        {
+            // 遍历所有顶点的邻接表，调整顶点索引
+            for (vertex->moveToStart(); vertex->currPos() < vertex->length(); vertex->next())
+            {
+                LList<Edge> *const &currVert = adjList->getValue();
+                for (currVert->moveToStart(); currVert->currPos() < currVert->length(); currVert->next())
+                {
+                    Edge temp = currVert->getValue();
+                    if (temp.vertex() > v)
+                    {
+                        // 如果顶点索引大于v，减1
+                        currVert->remove();
+                        currVert->insert(Edge(temp.vertex() - 1, temp.weight()));
+                    }
+                }
+            }
+        }
+
         numVertex--;
     }
 
