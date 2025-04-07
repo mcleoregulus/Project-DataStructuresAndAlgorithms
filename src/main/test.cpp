@@ -36,7 +36,7 @@ int main() {
     // cout << my_circuit.weight('dda', -5) << endl;
     
     my_circuit.printAdjList();
-    Floyd(&my_circuit);
+    // Floyd(&my_circuit);
     // Floyd(&my_circuit);
     
     // my_circuit.setMark(2, 5);
