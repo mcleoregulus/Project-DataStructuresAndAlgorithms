@@ -86,7 +86,14 @@ public:
     // Set edge (i, j) to "weight"
     void setEdge(int i, int j, Complex weight)
     {
-        assert(real(weight) > 0 && "May not set resistance to negative");
+        if (i == j) {
+            cerr << "Error: Invalid Input! setEdge: " << i << " to " << j << endl;
+            return;
+        }
+        if (real(weight) <= 0) {
+            cerr << "Error: May not set resistance to negative! setEdge: " << i << " to " << j << endl;
+            return;
+        }
 
         while (numVertex < i + 1 || numVertex < j + 1) // 自动增加顶点
         {
@@ -112,8 +119,12 @@ public:
             currVert->insert(currEdge);
         }
     }
-    void delEdge(int i, int j)
-    { // Delete edge (i, j)
+    void delEdge(int i, int j) // Delete edge (i, j)
+    {
+        if (i >= numVertex || j >= numVertex || i < 0 || j < 0 || i == j) {
+            cerr << "Error: Invalid Input: Out of Index! delEdge: " << i << " to " << j << endl;
+            return;
+        }
         vertex->moveToPos(i);
         LList<Edge> *const &currVert = vertex->getValue();
         if (isEdge(i, j))
@@ -122,8 +133,12 @@ public:
             numEdge--;
         }
     }
-    bool isEdge(int i, int j)
-    { // Is (i,j) an edge?
+    bool isEdge(int i, int j) // Is (i,j) an edge?
+    {
+        if (i >= numVertex || j >= numVertex || i < 0 || j < 0 || i == j) {
+            cerr << "Error: Invalid Input: Out of Index! isEdge: " << i << " to " << j << endl;
+            return false;
+        }
         vertex->moveToPos(i);
         LList<Edge> *const &currVert = vertex->getValue();
         Edge it;
@@ -140,6 +155,10 @@ public:
     }
     Complex weight(int i, int j)
     { // Return weight of (i, j)
+        if (i >= numVertex || j >= numVertex || i < 0 || j < 0 || i == j) {
+            cerr << "Error: Invalid Input: Out of Index! getWeight: " << i << " to " << j << endl;
+            return 0;
+        }
         vertex->moveToPos(i);
         LList<Edge> *const &currVert = vertex->getValue();
         Edge curr;
@@ -155,12 +174,20 @@ public:
     // void setMark(int v, int val) { mark[v] = val; }
     int getMark(int v)
     {
+        if (v >= numVertex || v < 0) {
+            cerr << "Error: Invalid Input: Out of Index! getMark: " << v << endl;
+            return UNVISITED;
+        }
         mark->moveToPos(v);
         // mark->print();
         return mark->getValue();
     }
     void setMark(int v, int val)
     {
+        if (v >= numVertex || v < 0) {
+            cerr << "Error: Invalid Input: Out of Index! setMark: " << v << endl;
+            return;
+        }
         mark->moveToPos(v);
         mark->remove();
         mark->insert(val);
@@ -183,7 +210,7 @@ public:
         v = v == -1 ? numVertex - 1 : v;
         if (v < 0 || v >= numVertex)
         {
-            cout << "Error: delVertex(v) Vertex not found! \n";
+            cerr << "Error: delVertex(v) Vertex not found! \n";
             return;
         }
 

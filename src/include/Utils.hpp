@@ -10,8 +10,9 @@ const int MAX_SIZE = 100;
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
+#include <vector>
 
-#include "CircuitGraphm.hpp"
+// #include "CircuitGraphm.hpp"
 #include "Graphl.hpp"
 
 using namespace std;
