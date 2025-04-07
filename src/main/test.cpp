@@ -9,6 +9,8 @@
 #include "../include/Graphl.hpp"
 // #include "../include/CircuitGraphl.hpp"
 
+#include "../include/Floyd.hpp"
+
 using namespace std;
 
 int main() {
@@ -25,26 +27,32 @@ int main() {
     // my_circuit.setBranch(1, 3, {1, 1});
     // my_circuit.setBranch(2, 4, {3, 4});
     // my_circuit.setBranch(3, 4, {1, 2});
+    // my_circuit.setBranch(1, 1, {3, -4});
+    // my_circuit.delVertex(8);
+    // my_circuit.delEdge(-5,1);
+    // my_circuit.setMark(8,0);
+    // cout << my_circuit.isEdge(8,1);
 
-    // cout << my_circuit.n() << endl;
+    // cout << my_circuit.weight('dda', -5) << endl;
     
-
+    my_circuit.printAdjList();
+    Floyd(&my_circuit);
+    // Floyd(&my_circuit);
     
     // my_circuit.setMark(2, 5);
-    my_circuit.printAdjList();
     // cout << my_circuit.e() << endl;
     // my_circuit.printMark();
     // my_circuit.getAdjMatrix();
-    printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
-    my_circuit.printAdmitMatrix();
+    // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
+    // my_circuit.printAdmitMatrix();
 
-    my_circuit.delVertex(2);
-    my_circuit.printAdjList();
+    // my_circuit.delVertex(2);
+    // my_circuit.printAdjList();
     // cout << my_circuit.e() << endl;
     // my_circuit.getAdjMatrix();
     // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
-    printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
-    my_circuit.printAdmitMatrix();
+    // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
+    // my_circuit.printAdmitMatrix();
 
 
 
