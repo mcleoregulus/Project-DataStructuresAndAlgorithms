@@ -5,45 +5,47 @@
 const int MAX_SIZE = 1000;
 
 #include <iostream>
+#include <iomanip>
 #include <complex>
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
-
 // #include "CircuitGraphm.hpp"
 #include "Graphl.hpp"
 
 using namespace std;
 
-#include <iostream>
-using namespace std;
-
-void printMatrix(Complex** matrix, int size) {
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
+void printMatrix(Complex **matrix, int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        for (int j = 0; j < size; ++j)
+        {
             cout << matrix[i][j] << "\t";
         }
         cout << endl;
     }
 }
 
-
-void importFromMatrix(double** &data, Graphl &circuit, int numBranch)
+void importFromMatrix(double **&data, Graphl &circuit, int numBranch)
 {
-    for(int i = 0; i < numBranch; ++i)
+    for (int i = 0; i < numBranch; ++i)
     {
-        if (circuit.n() < data[i][0] || circuit.n() < data[i][1]) {
+        if (circuit.n() < data[i][0] || circuit.n() < data[i][1])
+        {
             circuit.setBranch(data[i][0], data[i][1], {data[i][2], data[i][3]});
         }
-        else {
+        else
+        {
             Complex wgt = circuit.weight(data[i][0] - 1, data[i][1] - 1);
             if (wgt != Complex(0, 0))
             {
                 Complex new_wgt = (wgt * Complex(data[i][2], data[i][3])) / (wgt + Complex(data[i][2], data[i][3]));
                 circuit.setBranch(data[i][0], data[i][1], new_wgt);
             }
-            else {
+            else
+            {
                 circuit.setBranch(data[i][0], data[i][1], {data[i][2], data[i][3]});
             }
         }
@@ -64,7 +66,7 @@ int importFromCSV(const string &filename, Graphl &circuit)
 
     string line;
     int numBranch = 0;
-    double** data = new double*[MAX_SIZE];
+    double **data = new double *[MAX_SIZE];
 
     // 跳过标题行
     if (file.good())
@@ -130,7 +132,7 @@ int importFromCSV(const string &filename, Graphl &circuit)
         }
 
         // 存储数据
-        data[numBranch] = new double[4]; 
+        data[numBranch] = new double[4];
         data[numBranch][0] = num1;
         data[numBranch][1] = num2;
         data[numBranch][2] = num3;
@@ -142,7 +144,8 @@ int importFromCSV(const string &filename, Graphl &circuit)
     importFromMatrix(data, circuit, numBranch);
 
     // 释放内存
-    for (int i = 0; i < numBranch; i++) {
+    for (int i = 0; i < numBranch; i++)
+    {
         delete[] data[i];
     }
     delete[] data;
@@ -150,36 +153,35 @@ int importFromCSV(const string &filename, Graphl &circuit)
     return 0;
 }
 
-// void exportToCSV(const Complex ** & matrix, const string& filename)
-// {
-//     string filepath = "../../data/" + filename + ".csv";
-//     ofstream file(filepath);
+void exportToCSV(Graphl &circuit, const string &filename)
+{
+    string filepath = "../../data/" + filename + ".csv";
+    ofstream file(filepath);
 
-//     if (!file.is_open())
-//     {
-//         cerr << "Cannot open file for writing: " << filepath << endl;
-//         return;
-//     }
+    if (!file.is_open())
+    {
+        cerr << "Cannot open file for writing: " << filepath << endl;
+        return;
+    }
 
-//     file << "Line bus to bus,R (resistance),X (reactance)\n";
+    file << "Line bus to bus,R (resistance),X (reactance)\n";
 
-//     int n = matrix.size();
-//     for (int i = 0; i < n; ++i)
-//     {
-//         for (int j = i + 1; j < n; ++j) // 避免重复边，只输出一次
-//         {
-//             if (matrix[i][j] != complex<double>(0, 0))
-//             {
-//                 file << "\"" << i + 1 << "-" << j + 1 << "\","
-//                      << fixed << setprecision(4) << matrix[i][j].real() << ","
-//                      << matrix[i][j].imag() << "\n";
-//             }
-//         }
-//     }
+    Complex **matrix = circuit.getAdmitMatrix();
+    for (int i = 0; i < circuit.n(); ++i)
+    {
+        for (int j = i + 1; j < circuit.n(); ++j) // 避免重复边，只输出一次
+        {
+            if (matrix[i][j] != complex<double>(0, 0))
+            {
+                file << "\"" << i + 1 << "-" << j + 1 << "\","
+                     << fixed << setprecision(4) << matrix[i][j].real() << ","
+                     << matrix[i][j].imag() << "\n";
+            }
+        }
+    }
 
-//     file.close();
-//     cout << "Exported graph to " << filepath << endl;
-// }
-
+    file.close();
+    cout << "Exported graph to " << filepath << endl;
+}
 
 #endif // UTILS_HPP

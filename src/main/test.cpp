@@ -29,6 +29,7 @@ int main() {
     // cout << my_circuit.weight('dda', -5) << endl;
     
     my_circuit.printAdjList();
+    exportToCSV(my_circuit, "sss");
     // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
     // my_circuit.getAdjList();
     // string filename = "abc";
