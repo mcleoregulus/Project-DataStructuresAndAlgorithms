@@ -3,12 +3,11 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
-#include "../include/Utils.hpp"
 
 using namespace std;
 
 // 辅助函数：打印复数
-void printComplex(Complex c) {
+void printComplex(complex<double> c) {
     cout << fixed << setprecision(4) 
          << c.real() << (c.imag() >= 0 ? "+" : "") << c.imag() << "j";
 }
@@ -16,28 +15,24 @@ void printComplex(Complex c) {
 int main() {
     // 创建一个简单的测试电路
     // 假设是一个4节点的电路
-    Graphl circuit;
-    importFromCSV("example", circuit);
+    CircuitGraph circuit(4);
     
     // 设置支路阻抗
     // 节点1-2之间的阻抗为2+j1
-    // circuit.setBranch(1, 2, Complex(2, 1));
-    // // 节点2-3之间的阻抗为1+j0.5
-    // circuit.setBranch(2, 3, Complex(1, 0.5));
-    // // 节点3-4之间的阻抗为3+j1.5
-    // circuit.setBranch(3, 4, Complex(3, 1.5));
-    // // 节点4-1之间的阻抗为2+j1
-    // circuit.setBranch(4, 1, Complex(2, 1));
-    
+    circuit.setBranch(1, 2, complex<double>(2, 1));
+    // 节点2-3之间的阻抗为1+j0.5
+    circuit.setBranch(2, 3, complex<double>(1, 0.5));
+    // 节点3-4之间的阻抗为3+j1.5
+    circuit.setBranch(3, 4, complex<double>(3, 1.5));
+    // 节点4-1之间的阻抗为2+j1
+    circuit.setBranch(4, 1, complex<double>(2, 1));
 
     // 创建电路仿真器
     CircuitSimulator simulator(circuit);
 
     // 设置电压源和电流源
-    simulator.setVoltageSource(0, Complex(220, 0));  // 节点1设置为220V
-    simulator.setCurrentSource(2, Complex(10, 0));   // 节点3注入10A电流
-    simulator.setVoltageSource(3, Complex(110, 0));  // 节点1设置为220V
-
+    simulator.setVoltageSource(0, complex<double>(220, 0));  // 节点1设置为220V
+    simulator.setCurrentSource(2, complex<double>(10, 0));   // 节点3注入10A电流
 
     // 执行电路分析
     simulator.analyze();
@@ -56,7 +51,7 @@ int main() {
     int branchIndex = 0;
     for(int i = 0; i < circuit.n(); i++) {
         for(int j = i + 1; j < circuit.n(); j++) {
-            if(circuit.getAdjMatrix()[i][j] != Complex(0, 0)) {
+            if(circuit.getAdjMatrix()[i][j] != complex<double>(0, 0)) {
                 cout << "I" << (i+1) << "-" << (j+1) << " = ";
                 printComplex(currents[branchIndex++]);
                 cout << " A" << endl;
@@ -69,7 +64,7 @@ int main() {
     branchIndex = 0;
     for(int i = 0; i < circuit.n(); i++) {
         for(int j = i + 1; j < circuit.n(); j++) {
-            if(circuit.getAdjMatrix()[i][j] != Complex(0, 0)) {
+            if(circuit.getAdjMatrix()[i][j] != complex<double>(0, 0)) {
                 cout << "S" << (i+1) << "-" << (j+1) << " = ";
                 printComplex(powers[branchIndex++]);
                 cout << " VA" << endl;

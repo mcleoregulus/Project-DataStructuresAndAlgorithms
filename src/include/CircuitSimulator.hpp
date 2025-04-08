@@ -1,14 +1,12 @@
 #ifndef CIRCUIT_SIMULATOR_HPP
 #define CIRCUIT_SIMULATOR_HPP
 
-// #include "CircuitGraph.hpp"
+#include "../../libs/eigen-3.4.0/Eigen/Dense"
 #include "Graphl.hpp"
 #include <vector>
 #include <complex>
 #include <map>
 #include <string>
-// #include <Eigen/Dense>
-#include "../libs/eigen-3.4.0/Eigen/Dense"
 
 using namespace std;
 using namespace Eigen;
@@ -144,6 +142,11 @@ public:
         solveNodeVoltages();
         calculateBranchCurrents();
         calculatePowerDistribution();
+    }
+
+    void setReferenceNode(int n = -1) {
+        n = n == -1? circuit.n()-1 : n;
+        setVoltageSource(n, {0, 0});
     }
 };
 

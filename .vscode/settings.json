@@ -65,4 +65,5 @@
         "cinttypes": "cpp",
         "valarray": "cpp"
     },
+    "cmake.ignoreCMakeListsMissing": true,
 }

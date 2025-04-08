@@ -1,14 +1,7 @@
 
 #include <iostream>
-// #include "../include/Graphm.hpp"
-// #include "../include/CircuitGraph.hpp"
-#include "../include/Utils.hpp"
-// #include "../include/CSVImporter.hpp"
-// #include "../include/CSVExporter.hpp"
-// #include "Djsktra.cpp"
 #include "../include/Graphl.hpp"
-// #include "../include/CircuitGraphl.hpp"
-
+#include "../include/Utils.hpp"
 #include "../include/Floyd.hpp"
 
 using namespace std;
@@ -20,7 +13,7 @@ int main() {
     
     // cout << my_circuit.n() << endl;
 
-    importFromCSV("example", my_circuit);
+    importFromCSV("config", my_circuit);
     // cout << importFromCSV("example", my_circuit);
 
     // my_circuit.setBranch(1, 2, {2, 4});
