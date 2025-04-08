@@ -276,7 +276,6 @@ public:
 
         for (adjList->moveToStart(); adjList->currPos() < adjList->length(); adjList->next())
         {
-
             LList<Edge> *const &currVert = adjList->getValue();
             cout << "Vertex " << adjList->currPos() << " -> ";
             for (currVert->moveToStart(); currVert->currPos() < currVert->length(); currVert->next())

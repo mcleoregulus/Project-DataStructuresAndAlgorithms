@@ -13,7 +13,7 @@ int main() {
     
     // cout << my_circuit.n() << endl;
 
-    importFromCSV("config", my_circuit);
+    importFromCSV("test", my_circuit);
     // cout << importFromCSV("example", my_circuit);
 
     // my_circuit.setBranch(1, 2, {2, 4});
@@ -29,7 +29,8 @@ int main() {
     // cout << my_circuit.weight('dda', -5) << endl;
     
     my_circuit.printAdjList();
-    exportToCSV(my_circuit, "sss");
+    // exportToCSV(my_circuit, "sss");
+    exportAdjListToCSV(my_circuit, "output");
     // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
     // my_circuit.getAdjList();
     // string filename = "abc";

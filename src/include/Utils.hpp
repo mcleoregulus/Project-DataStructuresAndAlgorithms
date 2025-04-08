@@ -153,35 +153,79 @@ int importFromCSV(const string &filename, Graphl &circuit)
     return 0;
 }
 
-void exportToCSV(Graphl &circuit, const string &filename)
+// void exportToCSV(Graphl &circuit, const string &filename)
+// {
+//     string filepath = "../../data/" + filename + ".csv";
+//     ofstream file(filepath);
+
+//     if (!file.is_open())
+//     {
+//         cerr << "Cannot open file for writing: " << filepath << endl;
+//         return;
+//     }
+
+//     file << "Line bus to bus,R (resistance),X (reactance)\n";
+
+//     Complex **matrix = circuit.getAdmitMatrix();
+//     for (int i = 0; i < circuit.n(); ++i)
+//     {
+//         for (int j = i + 1; j < circuit.n(); ++j) // 避免重复边，只输出一次
+//         {
+//             if (matrix[i][j] != complex<double>(0, 0))
+//             {
+//                 file << "\"" << i + 1 << "-" << j + 1 << "\","
+//                      << fixed << setprecision(4) << matrix[i][j].real() << ","
+//                      << matrix[i][j].imag() << "\n";
+//             }
+//         }
+//     }
+
+//     file.close();
+//     cout << "Exported graph to " << filepath << endl;
+// }
+void exportAdjListToCSV(Graphl &circuit, const std::string &filename)
 {
-    string filepath = "../../data/" + filename + ".csv";
-    ofstream file(filepath);
+    std::string filepath = "../../data/" + filename + ".csv";
+    std::ofstream file(filepath);
 
     if (!file.is_open())
     {
-        cerr << "Cannot open file for writing: " << filepath << endl;
+        std::cerr << "Cannot open file for writing: " << filepath << std::endl;
         return;
     }
 
     file << "Line bus to bus,R (resistance),X (reactance)\n";
 
-    Complex **matrix = circuit.getAdmitMatrix();
+    // 获取邻接表，每个顶点对应一个 LList<Edge>*，存储所有邻接边
+    LList<LList<Edge> *> *adjList = circuit.getAdjList();
+
+    // 遍历所有顶点
     for (int i = 0; i < circuit.n(); ++i)
     {
-        for (int j = i + 1; j < circuit.n(); ++j) // 避免重复边，只输出一次
+        // 移动到相应的顶点 i 位置，获取其邻接链表
+        adjList->moveToPos(i);
+        LList<Edge> *currEdges = adjList->getValue();
+
+        // 遍历顶点 i 的所有边
+        currEdges->moveToStart();
+        while (currEdges->currPos() < currEdges->length())
         {
-            if (matrix[i][j] != complex<double>(0, 0))
+            Edge e = currEdges->getValue();
+            int j = e.vertex(); // 边连接到的顶点编号（0-based）
+
+            // 为了防止重复输出无向边，只在 i < j 时输出
+            if (i < j && e.weight() != Complex(0, 0))
             {
-                file << "\"" << i + 1 << "-" << j + 1 << "\","
-                     << fixed << setprecision(4) << matrix[i][j].real() << ","
-                     << matrix[i][j].imag() << "\n";
+                file << i + 1 << "-" << j + 1 << ","
+                     << std::fixed << std::setprecision(4) << e.weight().real() << ","
+                     << e.weight().imag() << "\n";
             }
+            currEdges->next();
         }
     }
 
     file.close();
-    cout << "Exported graph to " << filepath << endl;
+    std::cout << "Exported graph to " << filepath << std::endl;
 }
 
 #endif // UTILS_HPP
