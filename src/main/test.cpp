@@ -29,6 +29,11 @@ int main() {
     // cout << my_circuit.weight('dda', -5) << endl;
     
     my_circuit.printAdjList();
+    // printMatrix(my_circuit.getAdjMatrix(), my_circuit.n());
+    // my_circuit.getAdjList();
+    // string filename = "abc";
+    // Complex ** matrix = my_circuit.getAdmitMatrix();
+    // exportToCSV(&matrix, "fire");
     // Floyd(&my_circuit);
     // Floyd(&my_circuit);
     

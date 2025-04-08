@@ -150,4 +150,36 @@ int importFromCSV(const string &filename, Graphl &circuit)
     return 0;
 }
 
+// void exportToCSV(const Complex ** & matrix, const string& filename)
+// {
+//     string filepath = "../../data/" + filename + ".csv";
+//     ofstream file(filepath);
+
+//     if (!file.is_open())
+//     {
+//         cerr << "Cannot open file for writing: " << filepath << endl;
+//         return;
+//     }
+
+//     file << "Line bus to bus,R (resistance),X (reactance)\n";
+
+//     int n = matrix.size();
+//     for (int i = 0; i < n; ++i)
+//     {
+//         for (int j = i + 1; j < n; ++j) // 避免重复边，只输出一次
+//         {
+//             if (matrix[i][j] != complex<double>(0, 0))
+//             {
+//                 file << "\"" << i + 1 << "-" << j + 1 << "\","
+//                      << fixed << setprecision(4) << matrix[i][j].real() << ","
+//                      << matrix[i][j].imag() << "\n";
+//             }
+//         }
+//     }
+
+//     file.close();
+//     cout << "Exported graph to " << filepath << endl;
+// }
+
+
 #endif // UTILS_HPP
