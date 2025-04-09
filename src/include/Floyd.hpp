@@ -21,6 +21,7 @@ void prn_pass(int i, int j) {
 
 // 打印所有顶点对的最短路径
 void print_allpaths(Graph *G) {
+    cout << "\nFloyd Shortest Paths: \n";
     for (int i = 0; i < G->n(); i++) {
         for (int j = 0; j < G->n(); j++) {
             if (i != j && D[i][j] < INFINITY) {  // 排除自己到自己的情况，并检查可达性

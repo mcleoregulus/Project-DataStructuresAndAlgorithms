@@ -18,7 +18,7 @@ void printComplex(Complex c)
 int main()
 {
     Graphl circuit;
-    importFromCSV("config2", circuit);
+    importFromCSV("example2", circuit);
     circuit.printAdjList();
 
     // 创建电路仿真器

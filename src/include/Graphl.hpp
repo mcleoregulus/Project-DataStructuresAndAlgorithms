@@ -205,13 +205,13 @@ public:
         }
     }
 
-    void delVertex(int v = -1)
+    bool delVertex(int v = -1)
     {
         v = v == -1 ? numVertex - 1 : v;
         if (v < 0 || v >= numVertex)
         {
             cerr << "Error: delVertex(v) Vertex not found! \n";
-            return;
+            return false;
         }
 
         // 删除与该顶点相关的所有边: 1.遍历所有顶点，删除它们与v相连的边
@@ -268,6 +268,7 @@ public:
         }
 
         numVertex--;
+        return true;
     }
 
     void printAdjList()

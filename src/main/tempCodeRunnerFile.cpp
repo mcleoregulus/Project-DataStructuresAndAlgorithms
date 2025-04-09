@@ -1,9 +1,17 @@
 
-    // const auto &voltages = simulator.getNodeVoltages();
-    // for (int i = 0; i < voltages.size(); i++)
-    // {
-    //     double magnitude = abs(voltages[i]);          // 模
-    //     double phase = arg(voltages[i]) * 180 / M_PI; // 幅角，转换为度
-    //     cout << "V" << (i + 1) << " = ";
-    //     cout << magnitude << " |_" << phase << " V" << endl;
-    // }
+    // // 删除指定节点
+    // circuit.delVertex(4);
+    // // 设置支路阻抗
+    // circuit.setBranch(1, 4, {2, 4});
+    // // 设置标记数组
+    // circuit.setMark(2, VISITED);
+    // // 打印标记数组
+    // circuit.printMark();
+
+    // // 打印邻接矩阵和导纳矩阵
+    // circuit.printAdjList();
+    // printMatrix(circuit.getAdjMatrix(), circuit.n());
+    // circuit.printAdmitMatrix();
+
+    // // 弗洛伊德最短路径分析
+    // Floyd(&circuit);

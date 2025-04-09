@@ -13,6 +13,8 @@ const int MAX_SIZE = 1000;
 #include <stdexcept>
 // #include "CircuitGraphm.hpp"
 #include "Graphl.hpp"
+#include "CircuitSimulator.hpp"
+#include "CircuitVisualizer.hpp"
 
 using namespace std;
 
@@ -52,7 +54,8 @@ void importFromMatrix(double **&data, Graphl &circuit, int numBranch)
     }
 }
 
-int importFromCSV(const string &filename, Graphl &circuit)
+// int importFromCSV(const string &filename, Graphl &circuit)
+int importFromCSV(Graphl &circuit, const string &filename = "config")
 {
     
     string filepath = "../../data/" + filename + ".csv";
@@ -154,37 +157,7 @@ int importFromCSV(const string &filename, Graphl &circuit)
     return 0;
 }
 
-// void exportToCSV(Graphl &circuit, const string &filename)
-// {
-//     string filepath = "../../data/" + filename + ".csv";
-//     ofstream file(filepath);
-
-//     if (!file.is_open())
-//     {
-//         cerr << "Cannot open file for writing: " << filepath << endl;
-//         return;
-//     }
-
-//     file << "Line bus to bus,R (resistance),X (reactance)\n";
-
-//     Complex **matrix = circuit.getAdmitMatrix();
-//     for (int i = 0; i < circuit.n(); ++i)
-//     {
-//         for (int j = i + 1; j < circuit.n(); ++j) // 避免重复边，只输出一次
-//         {
-//             if (matrix[i][j] != complex<double>(0, 0))
-//             {
-//                 file << "\"" << i + 1 << "-" << j + 1 << "\","
-//                      << fixed << setprecision(4) << matrix[i][j].real() << ","
-//                      << matrix[i][j].imag() << "\n";
-//             }
-//         }
-//     }
-
-//     file.close();
-//     cout << "Exported graph to " << filepath << endl;
-// }
-void exportAdjListToCSV(Graphl &circuit, const std::string &filename)
+void exportToCSV(Graphl &circuit, const std::string &filename)
 {
     std::string filepath = "../../data/" + filename + ".csv";
     std::ofstream file(filepath);
@@ -228,5 +201,6 @@ void exportAdjListToCSV(Graphl &circuit, const std::string &filename)
     file.close();
     std::cout << "Exported graph to " << filepath << std::endl;
 }
+
 
 #endif // UTILS_HPP
