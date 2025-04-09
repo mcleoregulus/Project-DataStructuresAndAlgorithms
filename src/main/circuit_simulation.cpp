@@ -18,7 +18,7 @@ void printComplex(Complex c)
 int main()
 {
     Graphl circuit;
-    importFromCSV("example2", circuit);
+    importFromCSV("config2", circuit);
     circuit.printAdjList();
 
     // 创建电路仿真器
@@ -26,7 +26,7 @@ int main()
 
     // 设置电压源和电流源
     simulator.setVoltageSource(0, Complex(220, 0)); // 节点1设置为220V
-    simulator.setVoltageSource(1, Complex(220, 0));  // 节点2设置为220V
+    // simulator.setVoltageSource(1, Complex(220, 0));  // 节点2设置为220V
     simulator.setReferenceNode(); // 默认最后一个节点为参考节点，电压设为0
 
     // simulator.setCurrentSource(2, Complex(10, 0));   // 节点3注入10A电流
