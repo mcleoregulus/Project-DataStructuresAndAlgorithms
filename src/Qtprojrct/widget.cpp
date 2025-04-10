@@ -33,8 +33,15 @@ Widget::Widget(QWidget *parent)
     ui->Reactance_txt->setValidator(validator1);
 
     //初始化矩阵
-    importFromCSV(my_circuit, "example", true);
-    // importFromCSV(my_circuit);
+    if (importFromCSV(my_circuit, "example", true) == 0) {
+        // 成功导入时的处理
+        cout << "CSV import successfully" << endl;
+    } else {
+        // 失败时的处理（自动跳过了修改，my_circuit保持不变）
+        cout << "fail to operate use 4 bus only" << endl;
+    }
+
+    // cout <<importFromCSV(my_circuit, "example", true);
     cout << "print Adjust" << endl;
     my_circuit.printAdjList();
     ui->graphWidget->update();
@@ -63,6 +70,11 @@ void Widget::on_Delete_Button_clicked()  //当点击了删除节点按钮
     //尝试获取txt中的信息
     //QString Deletebus = ui->Delete_txt->text();  //得到输入内容
     int Deletebus = ui->Delete_txt->text().toInt();
+    if (ui->Delete_txt->text().isEmpty()) {
+        // 输入框为空
+        // int Deletebus = -1; //默认传参为1，删除最后一个节点
+        Deletebus = -1;
+    }
 
     if (my_circuit.delVertex(Deletebus))  {
         ui->Delete_txt->setPlaceholderText(tr("例：3"));  //设置输入框提示语
@@ -90,6 +102,7 @@ void Widget::on_Delete_impedance_clicked()
     int bus2 = ui->Bus_txt2->text().toInt();
     if(my_circuit.isEdge(bus1,bus2)){
         my_circuit.delEdge(bus1,bus2);
+        my_circuit.delEdge(bus2,bus1);
         ui->Bus_txt1->setPlaceholderText(tr("3"));  //设置输入框提示语
         ui->Bus_txt2->setPlaceholderText(tr("4"));  //设置输入框提示语
     }
@@ -121,6 +134,7 @@ void Widget::on_Change_impedance_clicked()
     if(bus2>bus1){
         if(resistance>=0){
             my_circuit.setEdge(bus1,bus2, mycomplex);
+            my_circuit.setEdge(bus2,bus1, mycomplex);
             ui->Bus_txt1->setPlaceholderText(tr("3"));  //设置输入框提示语
             ui->Bus_txt2->setPlaceholderText(tr("4"));  //设置输入框提示语
         }
@@ -238,8 +252,13 @@ void Widget::on_analyseButton_2_clicked()
 
 void Widget::on_importButton_clicked()
 {
-    // importFromCSV(my_circuit, "example");  // QString 转 std::string
-    importFromCSV(my_circuit, "config", true);
+    if (importFromCSV(my_circuit, "config", true) == 0) {
+        // 成功导入时的处理
+        cout << "CSV import successfully" << endl;
+    } else {
+        // 失败时的处理（自动跳过了修改，my_circuit保持不变）
+        cout << "fail to operate" << endl;
+    }
     cout << "Import new file, print Adjust" << endl;
     my_circuit.printAdjList();
     ui->graphWidget->update();
