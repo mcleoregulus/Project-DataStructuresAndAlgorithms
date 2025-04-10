@@ -55,10 +55,18 @@ void importFromMatrix(double **&data, Graphl &circuit, int numBranch)
 }
 
 // int importFromCSV(const string &filename, Graphl &circuit)
-int importFromCSV(Graphl &circuit, const string &filename = "config")
+int importFromCSV(Graphl &circuit, const string &filename = "config", bool Qt = false)
 {
-    
-    string filepath = "../../data/" + filename + ".csv";
+    circuit.reStart();
+    string filepath;
+    if (!Qt)
+    {
+        filepath = "../../data/" + filename + ".csv";
+    }
+    else
+    {
+        filepath = "../../../data/" + filename + ".csv";
+    }
 
     // 打开CSV文件
     ifstream file(filepath);
@@ -157,9 +165,18 @@ int importFromCSV(Graphl &circuit, const string &filename = "config")
     return 0;
 }
 
-void exportToCSV(Graphl &circuit, const std::string &filename)
+void exportToCSV(Graphl &circuit, const std::string &filename, bool Qt = false)
 {
-    std::string filepath = "../../data/" + filename + ".csv";
+    string filepath;
+    if (!Qt)
+    {
+        filepath = "../../data/" + filename + ".csv";
+    }
+    else
+    {
+        filepath = "../../../data/" + filename + ".csv";
+    }
+
     std::ofstream file(filepath);
 
     if (!file.is_open())
@@ -201,6 +218,5 @@ void exportToCSV(Graphl &circuit, const std::string &filename)
     file.close();
     std::cout << "Exported graph to " << filepath << std::endl;
 }
-
 
 #endif // UTILS_HPP

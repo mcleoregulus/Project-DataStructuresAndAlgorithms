@@ -53,6 +53,18 @@ public:
         for (int i = 0; i < numVertex; i++)
             vertex->append(new LList<Edge>());
     }
+    void reStart() {
+        // ~Graphl();
+        delete mark;
+        vertex->moveToStart();
+        while (vertex->currPos() < vertex->length())
+        {
+            delete vertex->getValue();
+            vertex->next();
+        }
+        delete vertex;
+        Init();
+    }
     int n() { return numVertex; } // Number of vertices
     int e() { return numEdge; }   // Number of edges
     int first(int v)

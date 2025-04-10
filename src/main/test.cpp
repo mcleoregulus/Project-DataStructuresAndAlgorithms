@@ -15,8 +15,9 @@ using namespace std;
 
 int main() {
 
-    Graphl circuit;
+    Graphl circuit(4);
     importFromCSV(circuit, "example");
+    // importFromCSV(circuit);
     // 打印邻接表
     circuit.printAdjList();
 
