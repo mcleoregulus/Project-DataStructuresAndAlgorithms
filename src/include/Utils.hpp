@@ -57,7 +57,6 @@ void importFromMatrix(double **&data, Graphl &circuit, int numBranch)
 // int importFromCSV(const string &filename, Graphl &circuit)
 int importFromCSV(Graphl &circuit, const string &filename = "config", bool Qt = false)
 {
-    circuit.reStart();
     string filepath;
     if (!Qt)
     {
@@ -75,6 +74,7 @@ int importFromCSV(Graphl &circuit, const string &filename = "config", bool Qt = 
         cerr << "Cannot open file: " << filepath << endl;
         return 1;
     }
+    circuit.reStart();
 
     string line;
     int numBranch = 0;
